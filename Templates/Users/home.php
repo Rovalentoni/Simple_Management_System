@@ -14,12 +14,12 @@
     <h1 class="header">Bem vindo, <?php echo $_SESSION['username'] ?></h1>
 
     <div class="navigationMenu">
-        <ul>
-            <li><a href="/?f=showHome">Home</a></li>
-            <li><a href="/?f=userList">Usuários</a></li>
-            <li><a href="/?f=carList">Veículos</a></li>
-            <li><a href="/?f=driverList">Motoristas</a></li>
-            <li><a href="/?f=logout">Logout</a></li>
+        <ul class="ulNavigation">
+            <li class="liNavigation"><a href="/?f=mainHome">Home</a></li>
+            <li class="liNavigation"><a href="/?f=userHomePage">Usuários</a></li>
+            <li class="liNavigation"><a href="/?f=carsHomePage">Veículos</a></li>
+            <li class="liNavigation"><a href="/?f=driversHomePage">Motoristas</a></li>
+            <li class="liNavigation"><a href="/?f=logout">Logout</a></li>
         </ul>
     </div>
 </body>

@@ -20,8 +20,8 @@
 
         <form action="/?f=loginSession&try=1" method="POST" class="formlogin">
             <div class="loginInside">
-                <div><label>Email:</div> <div><input type="text" name="email"></label></div>
-                <div><label>Senha: </div> <div><input type="password" name="password"></label></div>
+                <div><label>Email:</div> <div><input class="inputOriginal" type="text" name="email"></label></div>
+                <div><label>Senha: </div> <div><input class="inputOriginal" type="password" name="password"></label></div>
                 <input type="hidden" name="try" value="1">
                 <input type="submit" value="Entrar" class="buttonEntrar">
             </div>
