@@ -101,9 +101,10 @@ function fixName()
 {
     $currentUsers = readUsers();
     foreach ($currentUsers as $key => $value) {
+        if (isset($_SESSION['id'])){
         if ($value['id'] == $_SESSION['id'] && $value['username'] != $_SESSION['username']) {
             $_SESSION['username'] = $value['username'];
-        }
+        }}
     }
 }
 fixName();
