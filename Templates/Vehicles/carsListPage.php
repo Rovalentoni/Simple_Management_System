@@ -26,6 +26,7 @@
             <li class="sideLi"><a href="/?f=carsDetailsPage">Ver Detalhes</a></li>
             <li class="sideLi"><a href="/?f=carsDelete">Excluir</a></li>
         </ul>
+        <img src="/Midia/closeV.jpg" alt="car closeup vertical" style="width: 100%;">
 
         <div>
 

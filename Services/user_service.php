@@ -81,8 +81,10 @@ function edit_User($param)
         }
     }
     foreach ($currentUsers as $key => $value2) {
-            if ($value2['id'] == $param['userid'] && !empty($_POST['username']) &&
-            !empty($_POST['password']) && !empty($_POST['email'])) {
+        if (
+            $value2['id'] == $param['userid'] && !empty($_POST['username']) &&
+            !empty($_POST['password']) && !empty($_POST['email'])
+        ) {
             $value2['username'] = $_POST['username'];
             $value2['password'] = $_POST['password'];
             $value2['email'] = $_POST['email'];
@@ -90,9 +92,7 @@ function edit_User($param)
             file_put_contents(INCLUDE_PATH . '/Data/users.json', json_encode($currentUsers));
             header('Location:/?f=userHomePage&editdone=true');
         } else header('Location:/?f=userHomePage&blank=1');
-
     }
-
 }
 
 
@@ -101,10 +101,11 @@ function fixName()
 {
     $currentUsers = readUsers();
     foreach ($currentUsers as $key => $value) {
-        if (isset($_SESSION['id'])){
-        if ($value['id'] == $_SESSION['id'] && $value['username'] != $_SESSION['username']) {
-            $_SESSION['username'] = $value['username'];
-        }}
+        if (isset($_SESSION['id'])) {
+            if ($value['id'] == $_SESSION['id'] && $value['username'] != $_SESSION['username']) {
+                $_SESSION['username'] = $value['username'];
+            }
+        }
     }
 }
 fixName();

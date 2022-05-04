@@ -32,6 +32,7 @@
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
         <li class="sideLi"><a href="/?f=driversDetailsPage">Ver detalhes</a></li>
     </ul>
+    <img src="/Midia/silverV.jpg" alt="car closeup vertical" style="width: 100%;">
 
 </div>
 <div>

@@ -11,9 +11,7 @@
 
 <body>
 
-</body>
 
-</html>
 
 <h3 class="headerUser">Gerenciamento de Usuários de: <?php echo $_SESSION['username'] ?></h3>
 
@@ -32,7 +30,7 @@
         <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
         <li class="sideLi"><a href="/?f=userDetails">Ver detalhes</a></li>
     </ul>
-
+        <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;">
 </div>
 <div>
     <table class="tableHome">
@@ -58,8 +56,12 @@
                     <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['id'] ?>'">Deletar</button>
                 </td>
 
-            </tr>   
+            </tr>
         <?php endforeach ?>
 
     </table>
 </div>
+
+</body>
+
+</html>

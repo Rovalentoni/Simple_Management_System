@@ -32,6 +32,7 @@
         <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
         <li class="sideLi"><a href="/?f=carsDetailsPage">Ver detalhes</a></li>
     </ul>
+    <img src="/Midia/closeV.jpg" alt="car closeup vertical" style="width: 100%;">
 
 </div>
 <div>

@@ -33,6 +33,7 @@
         <li class="sideLi"><a href="/?f=driversDetailsPage">Ver detalhes</a></li>
 
     </ul>
+    <img src="/Midia/userCreate.png" alt="car closeup vertical" style="width: 100%; height:auto; position:relative; top:30px;">
 
 </div>
 

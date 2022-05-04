@@ -32,6 +32,7 @@
         <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
         <li class="sideLi"><a href="/?f=userDetails">Ver detalhes</a></li>
     </ul>
+    <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;">
 
 </div>
 <div>
