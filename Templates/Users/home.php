@@ -8,15 +8,27 @@
     <title>Bem vindo!</title>
     <link rel="stylesheet" href="/styles.css">
 
-
+    <style>
+        
+         body,html {
+  height: 100%;
+}
+body {
+    background-image: url("/Midia/background.png");
+            height: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+}
+    </style>
     
 </head>
 
 <body>
 
-    <h1 class="header">Bem vindo, <?php echo $_SESSION['username'] ?></h1>
+    <h1 class="header" style="color:white;">Bem vindo, <?php echo $_SESSION['username'] ?></h1>
 
-    <div class="navigationMenu">
+    <div class="navigationMenu" style="position: relative; bottom: 50px;">
         <ul class="ulNavigation">
             <li class="liNavigation"><a href="/?f=mainHome">Home</a></li>
             <li class="liNavigation"><a href="/?f=userHomePage">Usuários</a></li>
@@ -24,7 +36,7 @@
             <li class="liNavigation"><a href="/?f=driversHomePage">Motoristas</a></li>
             <li class="liNavigation"><a href="/?f=logout">Logout</a></li>
         </ul>
-        <img src="/Midia/carsLinedUp.jpg" alt="trucks" style="width:100%; height:800px;">
+        <!-- <img src="/Midia/carsLinedUp.jpg" alt="trucks" style="width:100%; height:800px;"> -->
     </div>
 
     

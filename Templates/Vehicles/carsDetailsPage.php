@@ -7,6 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Veículos</title>
     <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        
+        body,html {
+ height: 100%;
+}
+body {
+   background-image: url("/Midia/backgroundClose.jpg");
+           height: 90%;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-size: cover;
+}
+   </style>
+
 </head>
 
 <body>

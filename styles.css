@@ -30,6 +30,7 @@ a {
     position: relative;
     left: 250px;
     word-wrap: break-word;
+    color: white;
 
 }
 
@@ -38,16 +39,16 @@ a {
     border: 1px black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #e0f1e8;
+    color: black;
 }
 
 .sideBar {
-    height: 100%;
+    height: auto;
     width: 200px;
     background-color: #fff;
     position: fixed !important;
     z-index: 1;
     overflow: auto;
-    border-right: 1px solid #ccc !important;
     /* vertical-align: middle; */
     text-align: center;
     cursor: pointer;
@@ -62,10 +63,11 @@ a {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(28, 28, 28);
 }
 
 .sideLi a {
+    /* width: auto; */
     display: block;
     color: white;
     text-align: center;
@@ -109,15 +111,15 @@ a {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(28, 28, 28);
 }
 
 .navigationMenu {
     margin-left: 0px;
-    width: auto;
+    width: 100%;
     text-align: center;
     position: relative;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .userNavigation {
@@ -142,16 +144,16 @@ a {
 }
 
 .header {
-    background-color: #f1f1f1;
     text-align: center;
     padding: 10px;
 }
 
 .headerUser {
-    background-color: #f1f1f1;
+    /* background-color: #f1f1f1; */
     padding: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
+    color: white;
 }
 
 h1 {

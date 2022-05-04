@@ -7,6 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Usuários</title>
     <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        
+        body, html {
+ height: 100%;
+}
+body {
+   background-image: url("/Midia/backgroundWhite.png");
+           height: 90%;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-size: cover;
+}
+   </style>
 </head>
 
 <body>
@@ -32,7 +46,7 @@
         <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
         <li class="sideLi"><a href="/?f=userDetails">Ver detalhes</a></li>
     </ul>
-    <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;">
+    <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
 <div>

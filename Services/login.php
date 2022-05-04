@@ -16,7 +16,7 @@
 }
 body {
     background-image: url("/Midia/background.png");
-            height: 100%;
+            height: 90%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
