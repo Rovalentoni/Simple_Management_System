@@ -73,6 +73,8 @@ function userHomePage()
             echo "<div class='greenWarning'><h4>O usuário foi Editado com sucesso!</h4></div>";
         } else if (isset($_GET['blank'])) {
             echo "<div class='warning'><h4>Os campos não podem estar em branco.</h4></div>";
+        } else if (isset($_GET['editfail'])) {
+            echo "<div class='warning'><h4>Os campos não podem ser alterados se os mesmos permanecem iguais.</h4></div>";
         }
     } else header('Location:/?f=loginForm&try=2');
 }
@@ -92,7 +94,8 @@ function userListPage()
         include_once INCLUDE_PATH . '/Templates/Users/userListPage.php';
     } else header('Location:/?f=loginForm&try=2');
 }
-function userEditPage() {
+function userEditPage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
         include_once INCLUDE_PATH . '/Templates/Users/userEditPage.php';
@@ -126,7 +129,8 @@ function editUser()
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function userDetails() {
+function userDetails()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
         include_once INCLUDE_PATH . '/Templates/Users/userDetailsPage.php';
@@ -135,38 +139,40 @@ function userDetails() {
 
 //Páginas da listagem de veículos:
 
-function carsHomePage() {
+function carsHomePage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         include_once INCLUDE_PATH . '/Templates/Vehicles/carsHomePage.php';
         if (isset($_GET['create'])) {
             echo "<div class='greenWarning'><h4>O cadastro do veículo foi efetuado com sucesso!</h4></div>";
-    } else if (isset($_GET['delete'])) {
-        echo "<div class='greenWarning'><h4>O veículo foi deletado com sucesso!</h4></div>";
-    } else if (isset($_GET['edit'])) {
-        echo "<div class='greenWarning'><h4>O veículo foi editado e salvo com sucesso!</h4></div>";
-    } else if (isset($_GET['blank'])) {
-        echo "<div class='warning'><h4>Não é possível deixar nenhum campo em branco.</h4></div>";
-
-    }
-    }
-    else header('Location:/?f=loginForm&try=2');
+        } else if (isset($_GET['delete'])) {
+            echo "<div class='greenWarning'><h4>O veículo foi deletado com sucesso!</h4></div>";
+        } else if (isset($_GET['edit'])) {
+            echo "<div class='greenWarning'><h4>O veículo foi editado e salvo com sucesso!</h4></div>";
+        } else if (isset($_GET['blank'])) {
+            echo "<div class='warning'><h4>Não é possível deixar nenhum campo em branco.</h4></div>";
+        }
+    } else header('Location:/?f=loginForm&try=2');
 }
 
-function carsCreatePage() {
+function carsCreatePage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         include_once INCLUDE_PATH . '/Templates/Vehicles/carsCreatePage.php';
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function carsDetailsPage() {
+function carsDetailsPage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         include_once INCLUDE_PATH . '/Templates/Vehicles/carsDetailsPage.php';
     } else header('Location:/?f=loginForm&try=2');
 }
-function carsEditPage() {
+function carsEditPage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         include_once INCLUDE_PATH . '/Templates/Vehicles/carsEditPage.php';
@@ -175,21 +181,24 @@ function carsEditPage() {
 
 //Chamada de funções do Service de vehicles
 
-function createCars() {
+function createCars()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         create_Car($_POST);
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function deleteCars() {
+function deleteCars()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         delete_Car($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function editCars() {
+function editCars()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         edit_Car($_GET, $_POST);
@@ -200,42 +209,46 @@ function editCars() {
 
 //Páginas da listagem de Motoristas
 
-function driversHomePage() {
+function driversHomePage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
         include_once INCLUDE_PATH . '/Templates/Drivers/driversHomePage.php';
-        if(isset($_GET['create'])) {
+        if (isset($_GET['create'])) {
             echo "<div class='greenWarning'><h4>O cadastro do Motorista foi efetuado com sucesso!</h4></div>";
         } else if (isset($_GET['delete'])) {
             echo "<div class='greenWarning'><h4>O Motorista foi exlcuído com sucesso!</h4></div>";
         } else if (isset($_GET['edit'])) {
             echo "<div class='greenWarning'><h4>Os dados do Motorista foram editados com sucesso!</h4></div>";
-        }else if (isset($_GET['blank'])) {
+        } else if (isset($_GET['blank'])) {
             echo "<div class='warning'><h4>Não é possível deixar campos em branco na edição.</h4></div>";
         }
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function driversDetailsPage() {
+function driversDetailsPage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
         include_once INCLUDE_PATH . '/Templates/Drivers/driversDetailsPage.php';
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function driversCreatePage() {
+function driversCreatePage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
         include_once INCLUDE_PATH . '/Templates/Drivers/driversCreatePage.php';
-            if(isset($_GET['blank'])) {
-               echo "<div class='warning' style='bottom:55px'><h4>Nenhum campo pode ficar em branco</h4></div>";
-            } else if (isset($_GET['strlen'])) {
-                echo "<div class='warning' style='bottom:55px'><h4>Nenhum campo pode ter menos que 2 caractéres</h4></div>";
-            }
+        if (isset($_GET['blank'])) {
+            echo "<div class='warning' style='bottom:55px'><h4>Nenhum campo pode ficar em branco</h4></div>";
+        } else if (isset($_GET['strlen'])) {
+            echo "<div class='warning' style='bottom:55px'><h4>Nenhum campo pode ter menos que 2 caractéres</h4></div>";
+        }
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function driversEditPage() {
+function driversEditPage()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
         include_once INCLUDE_PATH . '/Templates/Drivers/driversEditPage.php';
@@ -244,23 +257,26 @@ function driversEditPage() {
 
 //Funções de Service de Motoristas
 
-function createDriver() {
+function createDriver()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
-            create_Driver($_POST);
+        create_Driver($_POST);
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function deleteDriver() {
+function deleteDriver()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
-            delete_Driver($_GET);
+        delete_Driver($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function editDriver() {
+function editDriver()
+{
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
-            edit_Driver($_GET);
+        edit_Driver($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }

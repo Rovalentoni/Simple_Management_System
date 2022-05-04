@@ -91,6 +91,7 @@ function edit_User($param)
             $currentUsers[$key] = $value2;
             file_put_contents(INCLUDE_PATH . '/Data/users.json', json_encode($currentUsers));
             header('Location:/?f=userHomePage&editdone=true');
+            break;
         } else header('Location:/?f=userHomePage&blank=1');
     }
 }
