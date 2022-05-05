@@ -24,7 +24,8 @@ function originalCars()
         file_put_contents(INCLUDE_PATH . '/Data/cars.json', json_encode($backup));
     }
 }
-originalCars();
+
+
 
 function create_Car($param)
 {
@@ -72,7 +73,7 @@ function edit_Car($param_GET, $param_POST)
                 $value['modelo'] = $param_POST['modelo'];
                 $value['tipo'] = $param_POST['tipo'];
                 $value['ano'] = $param_POST['ano'];
-                $value['cor'] = $param_POST['placa'];
+                $value['cor'] = $param_POST['cor'];
                     $currentCars[$key] = $value;
                         file_put_contents(INCLUDE_PATH . '/Data/cars.json', json_encode($currentCars));
                             header('Location:/?f=carsHomePage&edit=true');

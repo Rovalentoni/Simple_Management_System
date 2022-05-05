@@ -30,7 +30,7 @@
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=userHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
-        <li class="sideLi"><a href="/?f=userDetails">Ver detalhes</a></li>
+        <li class="sideLi"><a href="/?f=userHomePage">Voltar</a></li>
 
     </ul>
     <img src="/Midia/userCreate.png" alt="car closeup vertical" style="width: 100%; margin-top:20px; height:auto; position:relative;">

@@ -13,12 +13,7 @@ function login ($param) {
             
     
 }
-include_once INCLUDE_PATH . '/Services/user_service.php';
-include_once INCLUDE_PATH . '/Services/cars_service.php';
-include_once INCLUDE_PATH . '/Services/drivers_service.php';
-OriginalDrivers();
-originalCars();
-originalUsers();
+
 header('Location:/?f=loginForm&try=1'); die;
 
 }

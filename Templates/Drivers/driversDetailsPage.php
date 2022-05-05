@@ -43,7 +43,7 @@ body {
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
-        <li class="sideLi"><a href="/?f=driversDetailsPage">Ver detalhes</a></li>
+        
     </ul>
     <!-- <img src="/Midia/orangeV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
 
@@ -57,12 +57,13 @@ body {
             <th>Etnia</th>
             <th>CNH</th>
             <th>Sexo</th>
-            <th style="width:200px">Ações</th>
+            <th style="width:280px;">Ações</th>
 
         </tr>
         <?php
         $currentDrivers = readDrivers();
         foreach ($currentDrivers as $key => $value) :
+            if($_GET['userid'] == $value['id']){
         ?> <tr>
                 <td class="tdTable"><?php echo $value['id'] ?></td>
                 <td class="tdTable"><?php echo $value['username'] ?></td>
@@ -74,10 +75,11 @@ body {
                 <td class="tdTable">
                     <button class="smallerButton" onclick="window.location='/?f=driversEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
                     <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&userid=<?php echo $value['id'] ?>'">Deletar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=driversHomePage'">Voltar</button>
                 </td>
 
             </tr>   
-        <?php endforeach ?>
+        <?php }endforeach ?>
 
     </table>
 </div>

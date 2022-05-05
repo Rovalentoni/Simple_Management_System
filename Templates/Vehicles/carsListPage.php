@@ -23,8 +23,7 @@
     <div class="sideBar">
         <ul class="sideUl">
             <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
-            <li class="sideLi"><a href="/?f=carsDetailsPage">Ver Detalhes</a></li>
-            <li class="sideLi"><a href="/?f=carsDelete">Excluir</a></li>
+     
         </ul>
         <img src="/Midia/closeV.jpg" alt="car closeup vertical" style="width: 100%;">
 
@@ -39,7 +38,7 @@
                     <th>Tipo</th>
                     <th>Ano</th>
                     <th>Cor</th>
-                    <th style="width:200px;">Ações</th>
+                    <th style="width:280px;">Ações</th>
 
                 </tr>
                 <?php

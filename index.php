@@ -12,6 +12,22 @@ if (!empty($_GET['f'])) {
 } else loginForm();
 
 
+function start() {
+include_once INCLUDE_PATH . '/Services/user_service.php';
+include_once INCLUDE_PATH . '/Services/cars_service.php';
+include_once INCLUDE_PATH . '/Services/drivers_service.php';
+originalCars();
+originalDrivers();
+originalUsers();
+fixName();
+
+}
+start();
+
+
+
+
+
 //Funções de login
 
 function loginForm()
@@ -129,7 +145,7 @@ function editUser()
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function userDetails()
+function userDetailsPage()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';

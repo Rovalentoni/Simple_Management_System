@@ -31,7 +31,6 @@ function originalUsers()
         }
     }
 }
-originalUsers();
 
 // Funções do Usuário: 
 
@@ -109,4 +108,3 @@ function fixName()
         }
     }
 }
-fixName();

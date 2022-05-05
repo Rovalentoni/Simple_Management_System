@@ -43,7 +43,7 @@ body {
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
-        <li class="sideLi"><a href="/?f=driversDetailsPage">Ver detalhes</a></li>
+        
     </ul>
     <!-- <img src="/Midia/silverV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
 
@@ -57,6 +57,8 @@ body {
             <th>Etnia</th>
             <th>CNH</th>
             <th>Sexo</th>
+            <th style="width:280px;">Ações</th>
+
 
         </tr>
         <?php
@@ -84,6 +86,8 @@ body {
                     <td class="tdTable">
                         <button class="smallerButton" onclick="window.location='/?f=driversEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
                         <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&userid=<?php echo $value['id'] ?>'">Deletar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=driversDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+
                     </td>
 
                 <?php } ?>

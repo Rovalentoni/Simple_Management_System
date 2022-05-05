@@ -44,7 +44,6 @@ body {
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=carsHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
-        <li class="sideLi"><a href="/?f=carsDetailsPage">Ver detalhes</a></li>
     </ul>
     <!-- <img src="/Midia/closeV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
 
@@ -59,7 +58,7 @@ body {
             <th>Tipo</th>
             <th>Ano</th>
             <th>Cor</th>
-            <th style="width:200px;">Ações</th>
+            <th style="width:280px;">Ações</th>
 
         </tr>
         <?php
@@ -89,6 +88,8 @@ body {
                     <td class="tdTable">
                         <button class="smallerButton" onclick="window.location='/?f=carsEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
                         <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&userid=<?php echo $value['id'] ?>'">Deletar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=carsDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+
                     </td>
 
                 <?php } ?>

@@ -23,7 +23,6 @@
     <div class="sideBar">
         <ul class="sideUl">
             <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
-            <li class="sideLi"><a href="/?f=userDetails">Ver Detalhes</a></li>
                 <li class="sideLi"><a href="/?f=userDelete">Excluir</a></li>
         </ul>
 
@@ -37,7 +36,7 @@
                     <th>Etnia</th>
                     <th>CNH</th>
                     <th>Sexo</th>
-                    <th style="width:200px">Ações</th>
+                    <th style="width:280px;">Ações</th>
                 </tr>
                 <?php
                 $currentDrivers = readDrivers();

@@ -23,7 +23,6 @@
     <div class="sideBar">
         <ul class="sideUl">
             <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
-            <li class="sideLi"><a href="/?f=userDetails">Ver Detalhes</a></li>
                 <li class="sideLi"><a href="/?f=userDelete">Excluir</a></li>
         </ul>
         <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;">

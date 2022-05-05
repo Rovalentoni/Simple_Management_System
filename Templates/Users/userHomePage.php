@@ -41,7 +41,6 @@ body {
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=userHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
-        <li class="sideLi"><a href="/?f=userDetails">Ver detalhes</a></li>
     </ul>
         <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 </div>
@@ -52,7 +51,7 @@ body {
             <th>Nome</th>
             <th>Email</th>
             <th>Senha</th>
-            <th>Ações</th>
+            <th style="width:230px;">Ações</th>
 
         </tr>
         <?php
@@ -67,6 +66,8 @@ body {
                 <td class="tdTable">
                     <button class="smallerButton" onclick="window.location='/?f=userEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
                     <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['id'] ?>'">Deletar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=userDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+
                 </td>
 
             </tr>

@@ -14,7 +14,6 @@ function originalDrivers()
         file_put_contents(INCLUDE_PATH . '/Data/drivers.json', json_encode($backup));
     }
 }
-originalDrivers();
 
 function create_Driver($param)
 {
