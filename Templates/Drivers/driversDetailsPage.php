@@ -63,7 +63,7 @@ body {
         <?php
         $currentDrivers = readDrivers();
         foreach ($currentDrivers as $key => $value) :
-            if($_GET['userid'] == $value['id']){
+            if($_GET['driverid'] == $value['id']){
         ?> <tr>
                 <td class="tdTable"><?php echo $value['id'] ?></td>
                 <td class="tdTable"><?php echo $value['username'] ?></td>
@@ -73,8 +73,8 @@ body {
                 <td class="tdTable"><?php echo $value['sex'] ?></td>
 
                 <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&userid=<?php echo $value['id'] ?>'">Deletar</button>
+                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['id'] ?>'">Editar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['id'] ?>'">Deletar</button>
                     <button class="smallerRedButton" onclick="window.location='/?f=driversHomePage'">Voltar</button>
                 </td>
 

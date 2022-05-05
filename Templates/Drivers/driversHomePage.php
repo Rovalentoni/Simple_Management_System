@@ -72,9 +72,9 @@ body {
                 <td class="tdTable"><?php echo $value['sex'] ?></td>
 
                 <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=driversDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['id'] ?>'">Editar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['id'] ?>'">Deletar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=driversDetailsPage&driverid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
                 </td>
 
             </tr>   

@@ -39,7 +39,7 @@ function delete_Driver($param)
 {
     $currentDrivers = readDrivers();
         foreach($currentDrivers as $key => $value) {
-            if ($value['id'] == $param['userid']) {
+            if ($value['id'] == $param['driverid']) {
                 unset($currentDrivers[$key]);
                     file_put_contents(INCLUDE_PATH . '/Data/drivers.json', json_encode($currentDrivers));
                     header('Location:/?f=driversHomePage&delete=true');
@@ -51,7 +51,7 @@ function edit_Driver($param)
 {
     $currentDrivers = readDrivers();
         foreach($currentDrivers as $key => $value){
-            if ($value['id'] == $param['userid'] && !empty($_POST['username']) && !empty($_POST['age']) && !empty($_POST['type'])
+            if ($value['id'] == $param['driverid'] && !empty($_POST['username']) && !empty($_POST['age']) && !empty($_POST['type'])
             && !empty($_POST['cnh']) && !empty($_POST['sex'])) {
                 $value['username'] = $_POST['username'];
                 $value['age'] = $_POST['age'];

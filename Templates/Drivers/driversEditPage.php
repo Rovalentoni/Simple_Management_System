@@ -64,8 +64,8 @@ body {
         <?php
         $currentDrivers = readDrivers();
         foreach ($currentDrivers as $key => $value) :
-        ?> <tr> <?php if ($value['id'] == $_GET['userid']) { ?>
-                    <form action="/?f=editDriver&userid=<?php echo $value['id'] ?>&edit=true" method="POST">
+        ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
+                    <form action="/?f=editDriver&driverid=<?php echo $value['id'] ?>&edit=true" method="POST">
                     <td class="tdTable"><?php echo $value['id'] ?></td>
                     <td class="tdTable"><input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>"></td>
                     <td class="tdTable"><input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>"></td>
@@ -84,9 +84,9 @@ body {
                     <td class="tdTable"><?php echo $value['cnh'] ?></td>
                     <td class="tdTable"><?php echo $value['sex'] ?></td>
                     <td class="tdTable">
-                        <button class="smallerButton" onclick="window.location='/?f=driversEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=driversDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                        <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['id'] ?>'">Editar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['id'] ?>'">Deletar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=driversDetailsPage&driverid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
 
                     </td>
 

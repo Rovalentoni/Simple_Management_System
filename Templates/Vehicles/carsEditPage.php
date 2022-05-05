@@ -64,8 +64,8 @@ body {
         <?php
         $currentCars = readCars();
         foreach ($currentCars as $key => $value) :
-        ?> <tr> <?php if ($value['id'] == $_GET['userid']) { ?>
-                    <form action="/?f=editCars&userid=<?php echo $value['id'] ?>&edit=true" method="POST">
+        ?> <tr> <?php if ($value['id'] == $_GET['carId']) { ?>
+                    <form action="/?f=editCars&carId=<?php echo $value['id'] ?>&edit=true" method="POST">
                     <td class="tdTable"><?php echo $value['id'] ?></td>
                     <td class="tdTable"><input class="inputListing" type="text" name="placa" value="<?php echo $value['placa'] ?>"></td>
                     <td class="tdTable"><input type="text" class="inputListing" name="marca" value="<?php echo $value['marca'] ?>"></td>
@@ -86,9 +86,9 @@ body {
                     <td class="tdTable"><?php echo $value['ano'] ?></td>
                     <td class="tdTable"><?php echo $value['cor'] ?></td>
                     <td class="tdTable">
-                        <button class="smallerButton" onclick="window.location='/?f=carsEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=carsDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                        <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['id'] ?>'">Editar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['id'] ?>'">Deletar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=carsDetailsPage&carId=<?php echo $value['id'] ?>'">Ver Detalhes</button>
 
                     </td>
 

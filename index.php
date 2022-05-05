@@ -12,15 +12,15 @@ if (!empty($_GET['f'])) {
 } else loginForm();
 
 
-function start() {
-include_once INCLUDE_PATH . '/Services/user_service.php';
-include_once INCLUDE_PATH . '/Services/cars_service.php';
-include_once INCLUDE_PATH . '/Services/drivers_service.php';
-originalCars();
-originalDrivers();
-originalUsers();
-fixName();
-
+function start()
+{
+    include_once INCLUDE_PATH . '/Services/user_service.php';
+    include_once INCLUDE_PATH . '/Services/cars_service.php';
+    include_once INCLUDE_PATH . '/Services/drivers_service.php';
+    originalCars();
+    originalDrivers();
+    originalUsers();
+    fixName();
 }
 start();
 
@@ -100,6 +100,11 @@ function userCreatePage()
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
         include_once INCLUDE_PATH . '/Templates/Users/userCreatePage.php';
+        if (isset($_GET['blank'])) {
+            echo ("<div class='warningUp'>Não é possível deixar nenhum dos campos em branco</div>");
+        } else if (isset($_GET['strlen'])) {
+            echo ("<div class='warningUp'>Todos os campos precisam ter ao menos 4 digitos.</div>");
+        }
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -177,6 +182,11 @@ function carsCreatePage()
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
         include_once INCLUDE_PATH . '/Templates/Vehicles/carsCreatePage.php';
+        if (isset($_GET['blank'])) {
+            echo ("<div class='warningUp'>Não é possível deixar nenhum dos campos em branco</div>");
+        } else if (isset($_GET['strlen'])) {
+            echo ("<div class='warningUp'>Os campos não podem ter menos de 3 caracteres.</div>");
+        }
     } else header('Location:/?f=loginForm&try=2');
 }
 

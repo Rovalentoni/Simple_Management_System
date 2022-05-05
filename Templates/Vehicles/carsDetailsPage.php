@@ -65,7 +65,7 @@ body {
         <?php
         $currentCars = readCars();
         foreach ($currentCars as $key => $value) :
-            if ($_GET['userid'] == $value['id']){
+            if ($_GET['carId'] == $value['id']){
         ?> <tr>
                 <td class="tdTable"><?php echo $value['id'] ?></td>
                 <td class="tdTable"><?php echo $value['placa'] ?></td>
@@ -76,8 +76,8 @@ body {
                 <td class="tdTable"><?php echo $value['cor'] ?></td>
 
                 <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&userid=<?php echo $value['id'] ?>'">Deletar</button>
+                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['id'] ?>'">Editar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['id'] ?>'">Deletar</button>
                     <button class="smallerRedButton" onclick="window.location='/?f=carsHomePage'">Voltar</button>
 
                 </td>

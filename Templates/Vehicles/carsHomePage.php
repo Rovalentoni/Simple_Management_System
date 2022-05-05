@@ -70,9 +70,9 @@ body {
                 <td class="tdTable"><?php echo $value['modelo'] ?></td>
                 <td class="tdTable"><?php echo $value['tipo'] ?></td>
                 <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=carsDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['id'] ?>'">Editar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['id'] ?>'">Deletar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=carsDetailsPage&carId=<?php echo $value['id'] ?>'">Ver Detalhes</button>
 
                 </td>
 

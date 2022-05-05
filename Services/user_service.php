@@ -37,11 +37,9 @@ function originalUsers()
 function create_User($param)
 {
     if (empty($param['username']) || empty($param['password']) || empty($param['email'])) {
-        include_once INCLUDE_PATH . '/Templates/Users/userCreatePage.php';
-        echo "<div class='warning'>Os campos não podem ficar em branco</div>";
+        header('Location:/?f=userCreatePage&blank=true');
     } else if (strlen($param['username']) < 4 || strlen($param['password']) < 4 || strlen($param['email']) < 4) {
-        include_once INCLUDE_PATH . '/Templates/Users/userCreatePage.php';
-        echo "<div class='warning'>Os campos devem ter mais de 4 caracteres.</div>";
+        header('Location:/?f=userCreatePage&strlen=true');
     } else {
         $currentUsers = readUsers();
         $currentUsers[] = $_POST;
