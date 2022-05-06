@@ -66,7 +66,7 @@ body {
                 <td class="tdTable">
                     <button class="smallerButton" onclick="window.location='/?f=userEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
                     <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=userDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                    <button class="detailsButton2" onclick="window.location='/?f=userDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
 
                 </td>
 

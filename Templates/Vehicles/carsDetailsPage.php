@@ -46,7 +46,7 @@ body {
         <li class="sideLi"><a href="/?f=carsHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
     </ul>
-    <img src="/Midia/carDetails.png" alt="car closeup vertical" style="width: 100%;">
+
 
 </div>
 <div>

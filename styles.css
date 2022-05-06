@@ -329,3 +329,51 @@ button:hover {
     color: #0abf76;
 
 }
+.detailsPage {
+    display: block;
+    position: relative;
+    background-color: white;
+    border: 1px white;
+    border-radius: 20px;
+    width: 70%;
+    left: 335px;
+    height: 500px;
+    text-align: center;
+    color: black;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    
+}
+.detailsInfo {
+    display: block;
+    position: relative;
+    background-color: white;
+    text-align: left;
+    color: black;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin: 10px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.detailsButton {
+    background-color: #04AA6D;
+    color: white;
+    padding: 20px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    left: 300px;
+    top: 150px;
+    position: relative;
+}
+
+.detailsButton2 {
+    background-color: #04AA6D;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+}

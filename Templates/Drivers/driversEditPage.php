@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,97 +6,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Motoristas</title>
+    <title>Edição</title>
     <link rel="stylesheet" href="/styles.css">
-    <style>
-        
-        body,html {
- height: 100%;
-}
-body {
-   background-image: url("/Midia/backgroundRain.jpg");
-           height: 90%;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size: cover;
-}
-   </style>
 </head>
 
 <body>
 
+
+
+    <h3 class="headerUser">Edição de Motoristas de: <?php echo $_SESSION['username'] ?></h3>
+
+    <div class="navigationMenu">
+        <ul class="ulNavigation">
+            <li class="liNavigation"><a href="/?f=mainHome">Home</a></li>
+            <li class="liNavigation"><a href="/?f=userHomePage">Usuários</a></li>
+            <li class="liNavigation"><a href="/?f=carsHomePage">Veículos</a></li>
+            <li class="liNavigation"><a href="/?f=driversHomePage">Motoristas</a></li>
+            <li class="liNavigation"><a href="/?f=logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="sideBar">
+        <ul class="sideUl">
+            <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
+            <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
+            <li class="sideLi"><a href="/?f=driversHomePage">Voltar</a></li>
+
+        </ul>
+        <img src="/Midia/editLogo.jpg" alt="car closeup vertical" style="width: 100%; margin-top:20px; height:auto; position:relative;">
+
+    </div>
+
+
+    <?php
+    $currentDrivers = readDrivers();
+    foreach ($currentDrivers as $key => $value) :
+    ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
+    <div class="divMiddle">
+                    <form action="/?f=editDriver&driverid=<?php echo $value['id'] ?>&edit=true" method="POST">
+                    <div class="middlecontroller">
+                    <input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>">
+                    <input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>">
+                    <input type="text" class="inputListing" name="type" value="<?php echo $value['type'] ?>">
+                    <input type="text" class="inputListing" name="cnh" value="<?php echo $value['cnh'] ?>">
+                    <input type="text" class="inputListing" name="sex" value="<?php echo $value['sex'] ?>">
+                    <input class="buttonEntrar" type="submit" value="Salvar">
+                </form>
+        <?php }
+        endforeach ?>
 </body>
 
 </html>
-
-<h3 class="headerUser">Gerenciamento de Motoristas de: <?php echo $_SESSION['username'] ?></h3>
-
-<div class="navigationMenu">
-    <ul class="ulNavigation">
-        <li class="liNavigation"><a href="/?f=mainHome">Home</a></li>
-        <li class="liNavigation"><a href="/?f=userHomePage">Usuários</a></li>
-        <li class="liNavigation"><a href="/?f=carsHomePage">Veículos</a></li>
-        <li class="liNavigation"><a href="/?f=driversHomePage">Motoristas</a></li>
-        <li class="liNavigation"><a href="/?f=logout">Logout</a></li>
-    </ul>
-</div>
-<div class="sideBar">
-    <ul class="sideUl">
-        <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
-        <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
-        
-    </ul>
-    <!-- <img src="/Midia/silverV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
-
-</div>
-<div>
-    <table class="tableHome">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Etnia</th>
-            <th>CNH</th>
-            <th>Sexo</th>
-            <th style="width:280px;">Ações</th>
-
-
-        </tr>
-        <?php
-        $currentDrivers = readDrivers();
-        foreach ($currentDrivers as $key => $value) :
-        ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
-                    <form action="/?f=editDriver&driverid=<?php echo $value['id'] ?>&edit=true" method="POST">
-                    <td class="tdTable"><?php echo $value['id'] ?></td>
-                    <td class="tdTable"><input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>"></td>
-                    <td class="tdTable"><input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>"></td>
-                    <td class="tdTable"><input type="text" class="inputListing" name="type" value="<?php echo $value['type'] ?>"></td>
-                    <td class="tdTable"><input type="text" class="inputListing" name="cnh" value="<?php echo $value['cnh'] ?>"></td>
-                    <td class="tdTable"><input type="text" class="inputListing" name="sex" value="<?php echo $value['sex'] ?>"></td>
-                    <td class="tdTable">
-                        <input class="smallerGreenButton" type="submit" value="Salvar">
-                        </form>
-                            <button class="smallerButton" onclick="window.location='/?f=driversHomePage'">Voltar</button></td>
-                <?php } else { ?>
-                    <td class="tdTable"><?php echo $value['id'] ?></td>
-                    <td class="tdTable"><?php echo $value['username'] ?></td>
-                    <td class="tdTable"><?php echo $value['age'] ?></td>
-                    <td class="tdTable"><?php echo $value['type'] ?></td>
-                    <td class="tdTable"><?php echo $value['cnh'] ?></td>
-                    <td class="tdTable"><?php echo $value['sex'] ?></td>
-                    <td class="tdTable">
-                        <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['id'] ?>'">Editar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['id'] ?>'">Deletar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=driversDetailsPage&driverid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
-
-                    </td>
-
-                <?php } ?>
-
-
-
-            </tr>
-        <?php endforeach ?>
-
-    </table>
-</div>

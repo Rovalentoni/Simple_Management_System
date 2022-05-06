@@ -72,7 +72,7 @@ body {
                 <td class="tdTable">
                     <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['id'] ?>'">Editar</button>
                     <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=carsDetailsPage&carId=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                    <button class="detailsButton2" onclick="window.location='/?f=carsDetailsPage&carId=<?php echo $value['id'] ?>'">Ver Detalhes</button>
 
                 </td>
 

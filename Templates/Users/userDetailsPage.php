@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="/styles.css">
 
     <style>
-        
-        body, html {
- height: 100%;
-}
-body {
-   background-image: url("/Midia/backgroundWhite.png");
-           height: 90%;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size: cover;
-}
-   </style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url("/Midia/backgroundWhite.png");
+            height: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 
 </head>
 
@@ -49,35 +50,27 @@ body {
     <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
-<div>
-    <table class="tableHome">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Senha</th>
-            <th style="width:230px;">Ações</th>
+
+    <
 
         </tr>
         <?php
         $currentUsers = readUsers();
         foreach ($currentUsers as $key => $value) :
             if ($_GET['userid'] == $value['id']) {
-        ?> <tr>
-                <td class="tdTable"><?php echo $value['id'] ?></td>
-                <td class="tdTable"><?php echo $value['username'] ?></td>
-                <td class="tdTable"><?php echo $value['email'] ?></td>
-                <td class="tdTable"><?php echo $value['password'] ?></td>
+        ?>
+                <div class="detailsPage">
+                    <ul>
+                    <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
+                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
+                    <li class="detailsInfo"><b>Email:</b> <?php echo $value['email'] ?></li>
+                    <li class="detailsInfo"><b>Senha: </b><?php echo $value['password'] ?></li>
+                    </ul>
 
-                <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=editUser&userid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=userHomePage'">Voltar</button>
+        <?php }
+        endforeach ?>
+                <div> <button class="detailsButton" onclick="window.location='/?f=userHomePage'"> Voltar </button></div>
+                </div>
 
-                </td>
 
-            </tr>   
-        <?php }endforeach ?>
 
-    </table>
-</div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,19 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Motoristas</title>
     <link rel="stylesheet" href="/styles.css">
+
     <style>
-        
-        body,html {
- height: 100%;
-}
-body {
-   background-image: url("/Midia/backgroundRain.jpg");
-           height: 90%;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size: cover;
-}
-   </style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url("/Midia/backgroundWhite.png");
+            height: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -28,7 +32,7 @@ body {
 
 </html>
 
-<h3 class="headerUser">Detalhamento de Motoristas de <?php echo $_SESSION['username'] ?></h3>
+<h3 class="headerUser">Detalhamento de Motoristas <?php echo $_SESSION['username'] ?></h3>
 
 <div class="navigationMenu">
     <ul class="ulNavigation">
@@ -43,43 +47,33 @@ body {
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
-        
     </ul>
-    <!-- <img src="/Midia/orangeV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
+    <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
-<div>
-    <table class="tableHome">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Etnia</th>
-            <th>CNH</th>
-            <th>Sexo</th>
-            <th style="width:280px;">Ações</th>
+
+    <
 
         </tr>
         <?php
         $currentDrivers = readDrivers();
         foreach ($currentDrivers as $key => $value) :
-            if($_GET['driverid'] == $value['id']){
-        ?> <tr>
-                <td class="tdTable"><?php echo $value['id'] ?></td>
-                <td class="tdTable"><?php echo $value['username'] ?></td>
-                <td class="tdTable"><?php echo $value['age'] ?></td>
-                <td class="tdTable"><?php echo $value['type'] ?></td>
-                <td class="tdTable"><?php echo $value['cnh'] ?></td>
-                <td class="tdTable"><?php echo $value['sex'] ?></td>
+            if ($_GET['driverid'] == $value['id']) {
+        ?>
+                <div class="detailsPage">
+                    <ul>
+                    <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
+                <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
+                <li class="detailsInfo"><b>Idade:</b><?php echo $value['age'] ?></li>
+                <li class="detailsInfo"><b>Etnia:</b><?php echo $value['type'] ?></li>
+                <li class="detailsInfo"><b>CNH:</b><?php echo $value['cnh'] ?></li>
+                <li class="detailsInfo"><b>Sexo:</b><?php echo $value['sex'] ?></li>
+                    </ul>
 
-                <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=driversHomePage'">Voltar</button>
-                </td>
+        <?php }
+        endforeach ?>
+                <div> <button class="detailsButton" onclick="window.location='/?f=driversHomePage'"> Voltar </button></div>
+                </div>
 
-            </tr>   
-        <?php }endforeach ?>
 
-    </table>
-</div>
+

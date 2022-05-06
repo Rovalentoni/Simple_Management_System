@@ -86,11 +86,11 @@ function userHomePage()
         } else if (isset($_GET['delete'])) {
             echo "<div class='greenWarning'><h4>O usuário foi deletado com sucesso!</h4></div>";
         } else if (isset($_GET['editdone'])) {
-            echo "<div class='greenWarning'><h4>O usuário foi Editado com sucesso!</h4></div>";
+            echo "<div class='greenWarning' style='position:relative; top:350px;'><h4>O usuário foi Editado com sucesso!</h4></div>";
         } else if (isset($_GET['blank'])) {
-            echo "<div class='warning'><h4>Os campos não podem estar em branco.</h4></div>";
+            echo "<div class='warning' style='position:relative; top:350px;'><h4>Os campos não podem estar em branco.</h4></div>";
         } else if (isset($_GET['editfail'])) {
-            echo "<div class='warning'><h4>Os campos não podem ser alterados se os mesmos permanecem iguais.</h4></div>";
+            echo "<div class='warning' style='position:relative; top:350px;'><h4>Os campos não podem ser alterados se os mesmos permanecem iguais.</h4></div>";
         }
     } else header('Location:/?f=loginForm&try=2');
 }
@@ -101,9 +101,9 @@ function userCreatePage()
         include_once INCLUDE_PATH . '/Services/user_service.php';
         include_once INCLUDE_PATH . '/Templates/Users/userCreatePage.php';
         if (isset($_GET['blank'])) {
-            echo ("<div class='warningUp'>Não é possível deixar nenhum dos campos em branco</div>");
+            echo ("<div class='warningUp' 'position:relative; top:350px;'>Não é possível deixar nenhum dos campos em branco</div>");
         } else if (isset($_GET['strlen'])) {
-            echo ("<div class='warningUp'>Todos os campos precisam ter ao menos 4 digitos.</div>");
+            echo ("<div class='warningUp' 'position:relative; top:350px;'>Todos os campos precisam ter ao menos 4 digitos.</div>");
         }
     } else header('Location:/?f=loginForm&try=2');
 }
@@ -120,6 +120,11 @@ function userEditPage()
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
         include_once INCLUDE_PATH . '/Templates/Users/userEditPage.php';
+        if (isset($_GET['blank'])) {
+            echo ("<div class='warningUp' 'position:relative; top:350px;'>Não é possível deixar nenhum dos campos em branco</div>");
+        } else if (isset($_GET['strlen'])) {
+            echo ("<div class='warningUp' 'position:relative; top:350px;'>Todos os campos precisam ter ao menos 4 digitos.</div>");
+        }
     } else header('Location:/?f=loginForm&try=2');
 }
 
