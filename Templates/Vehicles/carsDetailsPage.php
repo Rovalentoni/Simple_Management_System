@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="/styles.css">
 
     <style>
-        
-        body,html {
- height: 100%;
-}
-body {
-   background-image: url("/Midia/backgroundClose.jpg");
-           height: 90%;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size: cover;
-}
-   </style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url("/Midia/backgroundClose.jpg");
+            height: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 
 </head>
 
@@ -30,7 +31,7 @@ body {
 
 </html>
 
-<h3 class="headerUser">Detalhamento de Veículos de <?php echo $_SESSION['username'] ?></h3>
+<h3 class="headerUser">Detalhamento de Veículos <?php echo $_SESSION['username'] ?></h3>
 
 <div class="navigationMenu">
     <ul class="ulNavigation">
@@ -46,44 +47,30 @@ body {
         <li class="sideLi"><a href="/?f=carsHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
     </ul>
-
+    <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
-<div>
-    <table class="tableHome">
-        <tr>
-            <th>ID</th>
-            <th>Placa</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Tipo</th>
-            <th>Ano</th>
-            <th>Cor</th>
-            <th style="width:280px;">Ações</th>
 
-        </tr>
-        <?php
-        $currentCars = readCars();
-        foreach ($currentCars as $key => $value) :
-            if ($_GET['carId'] == $value['id']){
-        ?> <tr>
-                <td class="tdTable"><?php echo $value['id'] ?></td>
-                <td class="tdTable"><?php echo $value['placa'] ?></td>
-                <td class="tdTable"><?php echo $value['marca'] ?></td>
-                <td class="tdTable"><?php echo $value['modelo'] ?></td>
-                <td class="tdTable"><?php echo $value['tipo'] ?></td>
-                <td class="tdTable"><?php echo $value['ano'] ?></td>
-                <td class="tdTable"><?php echo $value['cor'] ?></td>
+< </tr>
+    <?php
+    $cars_Service = new cars_Service;
+    $currentCars = $cars_Service->readcars();
+    foreach ($currentCars as $key => $value) :
+        if ($_GET['carId'] == $value['id']) {
+    ?>
+            <div class="detailsPage">
+                <ul>
+                   
+                    <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
+                <li class="detailsInfo"><b>Placa:</b><?php echo $value['placa'] ?></li>
+                <li class="detailsInfo"><b>Marca:</b><?php echo $value['marca'] ?></li>
+                <li class="detailsInfo"><b>Modelo:</b><?php echo $value['modelo'] ?></li>
+                <li class="detailsInfo"><b>Tipo:</b><?php echo $value['tipo'] ?></li>
+                <li class="detailsInfo"><b>Ano:</b><?php echo $value['ano'] ?></li>
+                <li class="detailsInfo"><b>Cor:</b><?php echo $value['cor'] ?></li>
+                </ul>
 
-                <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=carsHomePage'">Voltar</button>
-
-                </td>
-
-            </tr>   
-        <?php }endforeach ?>
-
-    </table>
-</div>
+        <?php }
+    endforeach ?>
+        <div> <button class="detailsButton2" onclick="window.location='/?f=carsHomePage'"> Voltar </button></div>
+            </div>

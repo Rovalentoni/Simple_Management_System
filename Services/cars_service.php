@@ -1,14 +1,16 @@
 <?php
+class cars_Service {
 
-function readCars()
+public function readCars()
 {
     return json_decode(file_get_contents(INCLUDE_PATH . '/Data/cars.json'), true);
 }
 
 
-function originalCars()
+public function originalCars()
 {
-    $currentCars = readCars();
+    $cars_Service = new cars_Service;
+    $currentCars = $cars_Service->readCars();
     if (empty($currentCars)) {
         $backup = [
             [
@@ -27,30 +29,10 @@ function originalCars()
 
 
 
-function create_Car($param)
-{
-    $currentCars = readCars();
-    // foreach ($param as $key => $value) {
-    //     if (empty($value)) {
+public function create_Car($param)
+{    $cars_Service = new cars_Service;
 
-    //         break;
-    //         header('Location:/?f=carsCreatePage&blank=true');
-
-    //     }
-    // }
-    // foreach ($param as $key => $value) {
-    //     if (strlen($value) < 3) {
-    //         header('Location:/?f=carsCreatePage&strlen=true');
-    //         break;
-    //     }
-    //  } 
-    //      $currentCars[] = $param;
-    //     foreach ($currentCars as $key => $value) {
-    //         $value['id'] = $key;
-    //         $currentCars[$key] = $value;
-    //     }
-    //     file_put_contents(INCLUDE_PATH . '/Data/cars.json', json_encode($currentCars));
-    //     header('Location:/?f=carsHomePage&create=true');
+    $currentCars = $cars_Service->readCars();
 
     if (
         empty($param['placa']) || empty($param['marca']) || empty($param['modelo'])
@@ -63,7 +45,8 @@ function create_Car($param)
     ) {
         header('Location:/?f=carsCreatePage&strlen=true');
     } else {
-        $currentCars = readCars();
+        $cars_Service = new cars_Service;
+        $currentCars = $cars_Service->readCars();
         $currentCars[] = $_POST;
         foreach ($currentCars as $key => $value) {
             $value['id'] = $key;
@@ -76,9 +59,10 @@ function create_Car($param)
 
 
 
-function delete_Car($param)
-{
-    $currentCars = readCars();
+public function delete_Car($param)
+{   
+    $cars_Service = new cars_Service;
+    $currentCars = $cars_Service->readCars();
     foreach ($currentCars as $key => $value) {
         if ($value['id'] == $param['carId']) {
             unset($currentCars[$key]);
@@ -88,9 +72,10 @@ function delete_Car($param)
     }
 }
 
-function edit_Car($param_GET, $param_POST)
-{
-    $currentCars = readCars();
+public function edit_Car($param_GET, $param_POST)
+{   
+    $cars_Service = new cars_Service;
+    $currentCars = $cars_Service->readCars();
     foreach ($currentCars as $key => $value) {
         if (
             $param_GET['carId'] == $value['id'] && !empty($param_POST['placa'])  && !empty($param_POST['marca']) && !empty($param_POST['modelo'])
@@ -109,4 +94,6 @@ function edit_Car($param_GET, $param_POST)
             header('Location:/?f=carsHomePage&blank=true');
         }
     }
+}
+
 }

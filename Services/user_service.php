@@ -1,8 +1,8 @@
 <?php
-
+class user_Service {
 //Funções de Read:
 
-function readUsers()
+public function readUsers()
 {
     return json_decode(file_get_contents(INCLUDE_PATH . '/Data/users.json'), true);
 }
@@ -11,9 +11,10 @@ function readUsers()
 
 //Funções de backup
 
-function originalUsers()
+public function originalUsers()
 {
-    $currentUsers = readUsers();
+    $user_Service = new user_Service;
+    $currentUsers = $user_Service->readUsers();
     if (empty($currentUsers)) {
         $adminLogin = [
             ["username" => "Rodrigo", "email" => "Rodrigo@hotmail.com", "password" => "sourodrigo", "id" => "0"]
@@ -34,14 +35,15 @@ function originalUsers()
 
 // Funções do Usuário: 
 
-function create_User($param)
+public function create_User($param)
 {
     if (empty($param['username']) || empty($param['password']) || empty($param['email'])) {
         header('Location:/?f=userCreatePage&blank=true');
     } else if (strlen($param['username']) < 4 || strlen($param['password']) < 4 || strlen($param['email']) < 4) {
         header('Location:/?f=userCreatePage&strlen=true');
     } else {
-        $currentUsers = readUsers();
+        $user_Service = new user_Service;
+        $currentUsers = $user_Service->readUsers();
         $currentUsers[] = $_POST;
         foreach ($currentUsers as $key => $value) {
             $value['id'] = $key;
@@ -52,21 +54,25 @@ function create_User($param)
     }
 }
 
-function delete_User($param)
+public function delete_User($param)
 {
-    $currentUsers = readUsers();
+    $user_Service = new user_Service;
+    
+    $currentUsers = $user_Service->readUsers();
     foreach ($currentUsers as $key => $value) {
         if ($value['id'] == $param['userid']) {
             unset($currentUsers[$key]);
             file_put_contents(INCLUDE_PATH . '/Data/users.json', json_encode($currentUsers));
             header('Location:/?f=userHomePage&delete=1');
+            // return true;
         }
     }
 }
 
-function edit_User($param)
-{
-    $currentUsers = readUsers();
+public function edit_User($param)
+{   
+    $user_Service = new user_Service;
+    $currentUsers = $user_Service->readUsers();
 
     foreach ($currentUsers as $key => $value) {
         if ($value['id'] == $param['userid']) {
@@ -95,9 +101,10 @@ function edit_User($param)
 
 
 
-function fixName()
-{
-    $currentUsers = readUsers();
+public function fixName()
+{   
+    $user_Service = new user_Service;
+    $currentUsers = $user_Service->readUsers();
     foreach ($currentUsers as $key => $value) {
         if (isset($_SESSION['id'])) {
             if ($value['id'] == $_SESSION['id'] && $value['username'] != $_SESSION['username']) {
@@ -105,4 +112,7 @@ function fixName()
             }
         }
     }
+}
+
+
 }

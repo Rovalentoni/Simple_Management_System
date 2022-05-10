@@ -37,7 +37,8 @@
                     <th>Senha</th>
                 </tr>
                 <?php
-                $currentUsers = readUsers();
+                $user_Service = new user_Service;
+                $currentUsers = $user_Service->readUsers();
                 foreach ($currentUsers as $key => $value) :
                 ?> <tr>
                         <td class="tdTable"><?php echo $value['id'] ?></td>

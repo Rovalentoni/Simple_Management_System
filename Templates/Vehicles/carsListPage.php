@@ -23,7 +23,7 @@
     <div class="sideBar">
         <ul class="sideUl">
             <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
-     
+
         </ul>
         <img src="/Midia/closeV.jpg" alt="car closeup vertical" style="width: 100%;">
 
@@ -42,7 +42,8 @@
 
                 </tr>
                 <?php
-                $currentCars = readCars();
+                $cars_Service = new cars_Service;
+                $currentCars =  $cars_Service->readCars();
                 foreach ($currentCars as $key => $value) :
                 ?> <tr>
                         <td class="tdTable"><?php echo $value['id'] ?></td>

@@ -9,17 +9,18 @@
     <link rel="stylesheet" href="/styles.css">
 
     <style>
-        
-         body,html {
-  height: 100%;
-}
-body {
-    background-image: url("/Midia/backgroundClose.jpg");
+        body,
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url("/Midia/backgroundClose.jpg");
             height: 90%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-}
+        }
     </style>
 
 </head>
@@ -61,7 +62,8 @@ body {
 
         </tr>
         <?php
-        $currentCars = readCars();
+        $cars_Service = new cars_Service;
+        $currentCars = $cars_Service->readCars();
         foreach ($currentCars as $key => $value) :
         ?> <tr>
                 <td class="tdTable"><?php echo $value['id'] ?></td>
@@ -76,7 +78,7 @@ body {
 
                 </td>
 
-            </tr>   
+            </tr>
         <?php endforeach ?>
 
     </table>

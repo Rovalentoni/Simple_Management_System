@@ -23,7 +23,7 @@
     <div class="sideBar">
         <ul class="sideUl">
             <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
-                <li class="sideLi"><a href="/?f=userDelete">Excluir</a></li>
+            <li class="sideLi"><a href="/?f=userDelete">Excluir</a></li>
         </ul>
 
         <div>
@@ -39,7 +39,8 @@
                     <th style="width:280px;">Ações</th>
                 </tr>
                 <?php
-                $currentDrivers = readDrivers();
+                $drivers_Service = new drivers_Service;
+                $currentDrivers = $drivers_Service->readDrivers();
                 foreach ($currentDrivers as $key => $value) :
                 ?> <tr>
                         <td class="tdTable"><?php echo $value['id'] ?></td>

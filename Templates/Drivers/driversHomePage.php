@@ -8,18 +8,19 @@
     <title>Gerenciamento de Motoristas</title>
     <link rel="stylesheet" href="/styles.css">
     <style>
-        
-        body,html {
- height: 100%;
-}
-body {
-   background-image: url("/Midia/backgroundRain.jpg");
-           height: 90%;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size: cover;
-}
-   </style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-image: url("/Midia/backgroundRain.jpg");
+            height: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +44,7 @@ body {
     <ul class="sideUl">
         <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
-        
+
     </ul>
     <!-- <img src="/Midia/silverV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
 
@@ -61,10 +62,11 @@ body {
 
         </tr>
         <?php
-        $currentDrivers = readDrivers();
+        $drivers_Service = new drivers_Service;
+        $currentDrivers = $drivers_Service->readDrivers();
         foreach ($currentDrivers as $key => $value) :
         ?> <tr>
-                <td class="tdTable" ><?php echo $value['id'] ?></td>
+                <td class="tdTable"><?php echo $value['id'] ?></td>
                 <td class="tdTable"><?php echo $value['username'] ?></td>
                 <td class="tdTable"><?php echo $value['age'] ?></td>
                 <td class="tdTable"><?php echo $value['type'] ?></td>
@@ -77,7 +79,7 @@ body {
                     <button class="detailsButton2" onclick="window.location='/?f=driversDetailsPage&driverid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
                 </td>
 
-            </tr>   
+            </tr>
         <?php endforeach ?>
 
     </table>

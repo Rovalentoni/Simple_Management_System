@@ -38,18 +38,19 @@
 
 
     <?php
-    $currentDrivers = readDrivers();
+    $drivers_Service = new drivers_Service;
+    $currentDrivers = $drivers_Service->readDrivers();
     foreach ($currentDrivers as $key => $value) :
     ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
     <div class="divMiddle">
                     <form action="/?f=editDriver&driverid=<?php echo $value['id'] ?>&edit=true" method="POST">
                     <div class="middlecontroller">
-                    <input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>">
-                    <input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>">
-                    <input type="text" class="inputListing" name="type" value="<?php echo $value['type'] ?>">
-                    <input type="text" class="inputListing" name="cnh" value="<?php echo $value['cnh'] ?>">
-                    <input type="text" class="inputListing" name="sex" value="<?php echo $value['sex'] ?>">
-                    <input class="buttonEntrar" type="submit" value="Salvar">
+                    <label><b>Nome:</b></label><input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>">
+                    <label><b>Idade:</b></label><input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>">
+                    <label><b>Etnia:</b></label><input type="text" class="inputListing" name="type" value="<?php echo $value['type'] ?>">
+                    <label><b>CNH:</b></label><input type="text" class="inputListing" name="cnh" value="<?php echo $value['cnh'] ?>">
+                    <label><b>Sexo:</b></label><input type="text" class="inputListing" name="sex" value="<?php echo $value['sex'] ?>">
+                   <input class="buttonEntrar" type="submit" value="Salvar">
                 </form>
         <?php }
         endforeach ?>

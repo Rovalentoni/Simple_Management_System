@@ -31,9 +31,9 @@
         <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
         <li class="sideLi"><a href="/?f=driversHomePage">Voltar</a></li>
-        
 
-        
+
+
 
     </ul>
     <img src="/Midia/userCreate.png" alt="car closeup vertical" style="width: 100%; margin-top:20px; height:auto; position:relative;">
@@ -64,4 +64,3 @@
         </div>
     </form>
 </div>
-           

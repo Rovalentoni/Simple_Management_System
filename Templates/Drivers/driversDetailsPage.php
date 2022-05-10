@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,28 +51,24 @@
 
 </div>
 
-    <
-
-        </tr>
-        <?php
-        $currentDrivers = readDrivers();
-        foreach ($currentDrivers as $key => $value) :
-            if ($_GET['driverid'] == $value['id']) {
-        ?>
-                <div class="detailsPage">
-                    <ul>
+< </tr>
+    <?php
+    $drivers_Service = new drivers_Service;
+    $currentDrivers = $drivers_Service->readDrivers();
+    foreach ($currentDrivers as $key => $value) :
+        if ($_GET['driverid'] == $value['id']) {
+    ?>
+            <div class="detailsPage">
+                <ul>
                     <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
-                <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
-                <li class="detailsInfo"><b>Idade:</b><?php echo $value['age'] ?></li>
-                <li class="detailsInfo"><b>Etnia:</b><?php echo $value['type'] ?></li>
-                <li class="detailsInfo"><b>CNH:</b><?php echo $value['cnh'] ?></li>
-                <li class="detailsInfo"><b>Sexo:</b><?php echo $value['sex'] ?></li>
-                    </ul>
+                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
+                    <li class="detailsInfo"><b>Idade:</b><?php echo $value['age'] ?></li>
+                    <li class="detailsInfo"><b>Etnia:</b><?php echo $value['type'] ?></li>
+                    <li class="detailsInfo"><b>CNH:</b><?php echo $value['cnh'] ?></li>
+                    <li class="detailsInfo"><b>Sexo:</b><?php echo $value['sex'] ?></li>
+                </ul>
 
         <?php }
-        endforeach ?>
-                <div> <button class="detailsButton" onclick="window.location='/?f=driversHomePage'"> Voltar </button></div>
-                </div>
-
-
-
+    endforeach ?>
+        <div> <button class="detailsButton3"  onclick="window.location='/?f=driversHomePage'"> Voltar </button></div>
+            </div>

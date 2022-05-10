@@ -51,26 +51,22 @@
 
 </div>
 
-    <
-
-        </tr>
-        <?php
-        $currentUsers = readUsers();
-        foreach ($currentUsers as $key => $value) :
-            if ($_GET['userid'] == $value['id']) {
-        ?>
-                <div class="detailsPage">
-                    <ul>
+< </tr>
+    <?php
+    $user_Service = new user_Service;
+    $currentUsers = $user_Service->readUsers();
+    foreach ($currentUsers as $key => $value) :
+        if ($_GET['userid'] == $value['id']) {
+    ?>
+            <div class="detailsPage">
+                <ul>
                     <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
                     <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
                     <li class="detailsInfo"><b>Email:</b> <?php echo $value['email'] ?></li>
                     <li class="detailsInfo"><b>Senha: </b><?php echo $value['password'] ?></li>
-                    </ul>
+                </ul>
 
         <?php }
-        endforeach ?>
-                <div> <button class="detailsButton" onclick="window.location='/?f=userHomePage'"> Voltar </button></div>
-                </div>
-
-
-
+    endforeach ?>
+        <div> <button class="detailsButton" onclick="window.location='/?f=userHomePage'"> Voltar </button></div>
+            </div>

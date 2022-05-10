@@ -1,7 +1,9 @@
 <?php 
+class session_Service {
 
-function login ($param) {
-    $users = readUsers();
+public function login ($param) {
+    $user_Service = new user_Service;
+    $users = $user_Service->readUsers();
     
     foreach($users as $key => $value) {
         if ($_POST['email'] == $value['email'] && $_POST['password'] == $value['password']){
@@ -18,7 +20,9 @@ header('Location:/?f=loginForm&try=1'); die;
 
 }
 
-function logout_User() {
+public function logout_User() {
     unset($_SESSION['login']);
     header('Location:/?f=loginForm');
+}
+
 }

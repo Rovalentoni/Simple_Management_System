@@ -57,7 +57,8 @@
 
             </tr>
             <?php
-            $currentUsers = readUsers();
+            $user_Service = new user_Service;
+            $currentUsers = $user_Service->readUsers();
             foreach ($currentUsers as $key => $value) :
             ?> <tr> <?php if ($value['id'] == $_GET['userid']) { ?>
                         <form action="/?f=editUser&userid=<?php echo $value['id'] ?>&edit=true" method="POST">

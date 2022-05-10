@@ -17,10 +17,13 @@ function start()
     include_once INCLUDE_PATH . '/Services/user_service.php';
     include_once INCLUDE_PATH . '/Services/cars_service.php';
     include_once INCLUDE_PATH . '/Services/drivers_service.php';
-    originalCars();
-    originalDrivers();
-    originalUsers();
-    fixName();
+    $user_Service = new user_Service;
+    $cars_Service = new cars_Service;
+    $drivers_Service = new drivers_Service;
+    $cars_Service->originalCars();
+    $drivers_Service->originalDrivers();
+    $user_Service->originalUsers();
+    $user_Service->fixName();
 }
 start();
 
@@ -31,9 +34,10 @@ start();
 //Funções de login
 
 function loginForm()
-{
+{ 
     include_once INCLUDE_PATH . '/Services/user_service.php';
-    originalUsers();
+    $user_Service = new user_Service;
+    $user_Service->originalUsers();
     if (isset($_SESSION['login'])) {
         header('Location:/?f=mainHome');
     } else {
@@ -50,13 +54,15 @@ function loginSession()
 {
     include_once INCLUDE_PATH . '/Services/session_service.php';
     include_once INCLUDE_PATH . '/Services/user_service.php';
-    login($_POST);
+    $session_Service = new session_Service;
+    $session_Service->login($_POST);
 }
 
 function logout()
 {
     include_once INCLUDE_PATH . '/Services/session_service.php';
-    logout_User();
+    $session_Service = new session_Service;
+    $session_Service->logout_User();
 }
 
 
@@ -127,6 +133,13 @@ function userEditPage()
         }
     } else header('Location:/?f=loginForm&try=2');
 }
+function userDetailsPage()
+{
+    if (isset($_SESSION['login'])) {
+        include_once INCLUDE_PATH . '/Services/user_service.php';
+        include_once INCLUDE_PATH . '/Templates/Users/userDetailsPage.php';
+    } else header('Location:/?f=loginForm&try=2');
+}
 
 
 //Chamada de funções Service de usuários
@@ -135,7 +148,9 @@ function createUser()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
-        create_User($_POST);
+        $user_Service = new user_Service;
+
+        $user_Service->create_User($_POST);
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -143,7 +158,11 @@ function deleteUser()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
-        delete_User($_GET);
+        $user_Service = new user_Service;
+        $user_Service->delete_User($_GET);
+            if ($user_Service->delete_User($_GET) === true) {
+                header('Location:/?f=userHomePage&delete=1');
+            }
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -151,17 +170,12 @@ function editUser()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/user_service.php';
-        edit_User($_GET);
+        $user_Service = new user_Service;
+        $user_Service->edit_User($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }
 
-function userDetailsPage()
-{
-    if (isset($_SESSION['login'])) {
-        include_once INCLUDE_PATH . '/Services/user_service.php';
-        include_once INCLUDE_PATH . '/Templates/Users/userDetailsPage.php';
-    } else header('Location:/?f=loginForm&try=2');
-}
+
 
 //Páginas da listagem de veículos:
 
@@ -216,7 +230,8 @@ function createCars()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
-        create_Car($_POST);
+        $cars_Service = new cars_Service;
+        $cars_Service->create_Car($_POST);
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -224,7 +239,8 @@ function deleteCars()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
-        delete_Car($_GET);
+        $cars_Service = new cars_Service;
+        $cars_Service->delete_Car($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -232,7 +248,8 @@ function editCars()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/cars_service.php';
-        edit_Car($_GET, $_POST);
+        $cars_Service = new cars_Service;
+        $cars_Service->edit_Car($_GET, $_POST);
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -292,7 +309,8 @@ function createDriver()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
-        create_Driver($_POST);
+        $drivers_Service = new drivers_Service;
+        $drivers_Service->create_Driver($_POST);
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -300,7 +318,8 @@ function deleteDriver()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
-        delete_Driver($_GET);
+        $drivers_Service = new drivers_Service;
+        $drivers_Service->delete_Driver($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }
 
@@ -308,6 +327,7 @@ function editDriver()
 {
     if (isset($_SESSION['login'])) {
         include_once INCLUDE_PATH . '/Services/drivers_service.php';
-        edit_Driver($_GET);
+        $drivers_Service = new drivers_Service;
+        $drivers_Service->edit_Driver($_GET);
     } else header('Location:/?f=loginForm&try=2');
 }

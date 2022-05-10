@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,21 +37,22 @@
 
 
     <?php
-    $currentCars = readCars();
+    $cars_Service = new cars_Service;
+    $currentCars = $cars_Service->readCars();
     foreach ($currentCars as $key => $value) :
     ?> <tr> <?php if ($value['id'] == $_GET['carId']) { ?>
-    <div class="divMiddle">
+                <div class="divMiddle">
                     <form action="/?f=editCars&carId=<?php echo $value['id'] ?>&edit=true" method="POST">
-                    <div class="middlecontroller">
-                        <input type="text" class="inputListing" name="placa" value="<?php echo $value['placa'] ?>">
-                        <input type="text" class="inputListing" name="marca" value="<?php echo $value['marca'] ?>">
-                        <input type="text" class="inputListing" name="modelo" value="<?php echo $value['modelo'] ?>">
-                        <input type="text" class="inputListing" name="tipo" value="<?php echo $value['tipo'] ?>">
-                        <input type="text" class="inputListing" name="ano" value="<?php echo $value['ano'] ?>">
-                        <input type="text" class="inputListing" name="cor" value="<?php echo $value['cor'] ?>">
-                    <input class="buttonEntrar" type="submit" value="Salvar">
-                </form>
-        <?php }
+                        <div class="middlecontroller">
+                            <input type="text" class="inputListing" name="placa" value="<?php echo $value['placa'] ?>">
+                            <input type="text" class="inputListing" name="marca" value="<?php echo $value['marca'] ?>">
+                            <input type="text" class="inputListing" name="modelo" value="<?php echo $value['modelo'] ?>">
+                            <input type="text" class="inputListing" name="tipo" value="<?php echo $value['tipo'] ?>">
+                            <input type="text" class="inputListing" name="ano" value="<?php echo $value['ano'] ?>">
+                            <input type="text" class="inputListing" name="cor" value="<?php echo $value['cor'] ?>">
+                            <input class="buttonEntrar" type="submit" value="Salvar">
+                    </form>
+            <?php }
         endforeach ?>
 </body>
 
