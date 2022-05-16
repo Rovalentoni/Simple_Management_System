@@ -57,7 +57,7 @@
 
             </tr>
             <?php
-            $user_Service = new user_Service;
+            $user_Service = new UserService;
             $currentUsers = $user_Service->readUsers();
             foreach ($currentUsers as $key => $value) :
             ?> <tr> <?php if ($value['id'] == $_GET['userid']) { ?>

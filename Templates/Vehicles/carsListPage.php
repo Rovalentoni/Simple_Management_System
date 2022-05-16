@@ -42,7 +42,7 @@
 
                 </tr>
                 <?php
-                $cars_Service = new cars_Service;
+                $cars_Service = new CarsService;
                 $currentCars =  $cars_Service->readCars();
                 foreach ($currentCars as $key => $value) :
                 ?> <tr>

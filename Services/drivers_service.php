@@ -1,6 +1,6 @@
 <?php
 
-class drivers_Service {
+class DriversService {
 
 
 public function readDrivers()
@@ -9,8 +9,8 @@ public function readDrivers()
 }
 
 public function originalDrivers()
-{   $drivers_Service = new drivers_Service;
-    $currentDrivers = $drivers_Service->readDrivers();
+{   
+    $currentDrivers = $this->readDrivers();
     if (empty($currentDrivers)) {
         $backup = [
             ["id" => "0", "username" => "Cleitin do guincho", "age" => "33", "type" => "white", "cnh" => "45738324", "sex" => "Masculino"]
@@ -28,8 +28,7 @@ public function create_Driver($param)
         } else if (strlen($value) < 3) {
             header('Location:/?f=driversCreatePage&strlen=true');
         } else {
-            $drivers_Service = new drivers_Service;
-            $currentDrivers = $drivers_Service->readDrivers();
+            $currentDrivers = $this->readDrivers();
             $currentDrivers[] = $_POST;
             foreach ($currentDrivers as $key => $value) {
                 $value['id'] = $key;
@@ -43,8 +42,7 @@ public function create_Driver($param)
 
 public function delete_Driver($param)
 {   
-    $drivers_Service = new drivers_Service;
-    $currentDrivers = $drivers_Service->readDrivers();
+    $currentDrivers = $this->readDrivers();
         foreach($currentDrivers as $key => $value) {
             if ($value['id'] == $param['driverid']) {
                 unset($currentDrivers[$key]);
@@ -56,8 +54,7 @@ public function delete_Driver($param)
 
 public function edit_Driver($param)
 {   
-    $drivers_Service = new drivers_Service;
-    $currentDrivers = $drivers_Service->readDrivers();
+    $currentDrivers = $this->readDrivers();
         foreach($currentDrivers as $key => $value){
             if ($value['id'] == $param['driverid'] && !empty($_POST['username']) && !empty($_POST['age']) && !empty($_POST['type'])
             && !empty($_POST['cnh']) && !empty($_POST['sex'])) {

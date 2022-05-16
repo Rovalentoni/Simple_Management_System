@@ -1,12 +1,12 @@
 <?php 
-class session_Service {
+class SessionService {
 
 public function login ($param) {
-    $user_Service = new user_Service;
+    $user_Service = new UserService;
     $users = $user_Service->readUsers();
     
     foreach($users as $key => $value) {
-        if ($_POST['email'] == $value['email'] && $_POST['password'] == $value['password']){
+        if ($param['email'] == $value['email'] && $param['password'] == $value['password']){
                 $_SESSION['login'] = true;
                 header('Location:/?f=mainHome');
                 $_SESSION['username'] = $value['username'];

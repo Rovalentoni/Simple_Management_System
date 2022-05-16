@@ -53,7 +53,7 @@
 
 < </tr>
     <?php
-    $cars_Service = new cars_Service;
+    $cars_Service = new CarsService;
     $currentCars = $cars_Service->readcars();
     foreach ($currentCars as $key => $value) :
         if ($_GET['carId'] == $value['id']) {

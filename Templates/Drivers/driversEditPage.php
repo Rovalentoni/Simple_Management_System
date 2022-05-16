@@ -38,7 +38,7 @@
 
 
     <?php
-    $drivers_Service = new drivers_Service;
+    $drivers_Service = new DriversService;
     $currentDrivers = $drivers_Service->readDrivers();
     foreach ($currentDrivers as $key => $value) :
     ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
