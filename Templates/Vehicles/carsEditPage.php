@@ -37,8 +37,7 @@
 
 
     <?php
-    $cars_Service = new CarsService;
-    $currentCars = $cars_Service->readCars();
+
     foreach ($currentCars as $key => $value) :
     ?> <tr> <?php if ($value['id'] == $_GET['carId']) { ?>
                 <div class="divMiddle">

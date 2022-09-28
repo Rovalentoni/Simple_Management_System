@@ -46,7 +46,7 @@
             <h2>Cadastro de novo Motorista:</h2>
 
             <div><label>Nome do novo Motorista:</label></div>
-            <div><input type="text" class="inputMiddle" name="username"></div>
+            <div><input type="text" class="inputMiddle" name="users_username"></div>
 
             <div><label>Idade do Motorista:</label></div>
             <div><input type="text" class="inputMiddle" name="age"></label></div>

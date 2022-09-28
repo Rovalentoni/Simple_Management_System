@@ -43,13 +43,13 @@
             <h2>Cadastro de novo usuário:</h2>
 
             <div><label>Novo usuário:</label></div>
-            <div><input type="text" class="inputMiddle" name="username"></div>
+            <div><input type="text" class="inputMiddle" name="users_username"></div>
 
             <div><label>Email do usuário:</label></div>
-            <div><input type="text" class="inputMiddle" name="email"></label></div>
+            <div><input type="text" class="inputMiddle" name="users_email"></label></div>
 
             <div><label>Senha do usuário:</label></div>
-            <div><input type="password" class="inputMiddle" name="password"></label></div>
+            <div><input type="password" class="inputMiddle" name="users_password"></label></div>
 
             <div><input type="submit" class="buttonEntrar" value="Cadastrar"></div>
         </div>

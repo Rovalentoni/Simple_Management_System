@@ -53,15 +53,13 @@
 
 < </tr>
     <?php
-    $drivers_Service = new DriversService;
-    $currentDrivers = $drivers_Service->readDrivers();
     foreach ($currentDrivers as $key => $value) :
         if ($_GET['driverid'] == $value['id']) {
     ?>
             <div class="detailsPage">
                 <ul>
                     <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
-                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
+                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['users_username'] ?></li>
                     <li class="detailsInfo"><b>Idade:</b><?php echo $value['age'] ?></li>
                     <li class="detailsInfo"><b>Etnia:</b><?php echo $value['type'] ?></li>
                     <li class="detailsInfo"><b>CNH:</b><?php echo $value['cnh'] ?></li>

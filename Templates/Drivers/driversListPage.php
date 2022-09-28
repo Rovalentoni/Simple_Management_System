@@ -39,12 +39,11 @@
                     <th style="width:280px;">Ações</th>
                 </tr>
                 <?php
-                $drivers_Service = new DriversService;
-                $currentDrivers = $drivers_Service->readDrivers();
+               
                 foreach ($currentDrivers as $key => $value) :
                 ?> <tr>
                         <td class="tdTable"><?php echo $value['id'] ?></td>
-                        <td class="tdTable"><?php echo $value['username'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_username'] ?></td>
                         <td class="tdTable"><?php echo $value['age'] ?></td>
                         <td class="tdTable"><?php echo $value['type'] ?></td>
                         <td class="tdTable"><?php echo $value['cnh'] ?></td>

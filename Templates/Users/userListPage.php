@@ -23,7 +23,7 @@
     <div class="sideBar">
         <ul class="sideUl">
             <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
-                <li class="sideLi"><a href="/?f=userDelete">Excluir</a></li>
+            <li class="sideLi"><a href="/?f=userDelete">Excluir</a></li>
         </ul>
         <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;">
 
@@ -37,14 +37,13 @@
                     <th>Senha</th>
                 </tr>
                 <?php
-                $user_Service = new UserService;
-                $currentUsers = $user_Service->readUsers();
+
                 foreach ($currentUsers as $key => $value) :
                 ?> <tr>
                         <td class="tdTable"><?php echo $value['id'] ?></td>
-                        <td class="tdTable"><?php echo $value['username'] ?></td>
-                        <td class="tdTable"><?php echo $value['email'] ?></td>
-                        <td class="tdTable"><?php echo $value['password'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_username'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_email'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_password'] ?></td>
                     </tr>
                 <?php endforeach ?>
 

@@ -38,14 +38,13 @@
 
 
     <?php
-    $drivers_Service = new DriversService;
-    $currentDrivers = $drivers_Service->readDrivers();
+    
     foreach ($currentDrivers as $key => $value) :
     ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
     <div class="divMiddle">
                     <form action="/?f=editDriver&driverid=<?php echo $value['id'] ?>&edit=true" method="POST">
                     <div class="middlecontroller">
-                    <label><b>Nome:</b></label><input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>">
+                    <label><b>Nome:</b></label><input type="text" class="inputListing" name="users_username" value="<?php echo $value['users_username'] ?>">
                     <label><b>Idade:</b></label><input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>">
                     <label><b>Etnia:</b></label><input type="text" class="inputListing" name="type" value="<?php echo $value['type'] ?>">
                     <label><b>CNH:</b></label><input type="text" class="inputListing" name="cnh" value="<?php echo $value['cnh'] ?>">

@@ -62,12 +62,11 @@
 
         </tr>
         <?php
-        $drivers_Service = new DriversService;
-        $currentDrivers = $drivers_Service->readDrivers();
+        function driversHome($currentDrivers) {
         foreach ($currentDrivers as $key => $value) :
         ?> <tr>
                 <td class="tdTable"><?php echo $value['id'] ?></td>
-                <td class="tdTable"><?php echo $value['username'] ?></td>
+                <td class="tdTable"><?php echo $value['users_username'] ?></td>
                 <td class="tdTable"><?php echo $value['age'] ?></td>
                 <td class="tdTable"><?php echo $value['type'] ?></td>
                 <td class="tdTable"><?php echo $value['cnh'] ?></td>
@@ -80,7 +79,7 @@
                 </td>
 
             </tr>
-        <?php endforeach ?>
+        <?php endforeach;} ?>
 
     </table>
 </div>

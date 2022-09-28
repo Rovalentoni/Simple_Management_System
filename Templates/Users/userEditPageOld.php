@@ -57,24 +57,23 @@
 
             </tr>
             <?php
-            $user_Service = new UserService;
-            $currentUsers = $user_Service->readUsers();
+
             foreach ($currentUsers as $key => $value) :
             ?> <tr> <?php if ($value['id'] == $_GET['userid']) { ?>
                         <form action="/?f=editUser&userid=<?php echo $value['id'] ?>&edit=true" method="POST">
                             <td class="tdTable"><?php echo $value['id'] ?></td>
-                            <td class="tdTable"><input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>"></td>
-                            <td class="tdTable"><input type="text" class="inputListing" name="email" value="<?php echo $value['email'] ?>"></td>
-                            <td class="tdTable"><input type="text" class="inputListing" name="password" value="<?php echo $value['password'] ?>"></td>
+                            <td class="tdTable"><input type="text" class="inputListing" name="users_username" value="<?php echo $value['users_username'] ?>"></td>
+                            <td class="tdTable"><input type="text" class="inputListing" name="users_email" value="<?php echo $value['users_email'] ?>"></td>
+                            <td class="tdTable"><input type="text" class="inputListing" name="users_password" value="<?php echo $value['users_password'] ?>"></td>
                             <td class="tdTable">
                                 <input class="smallerGreenButton" type="submit" value="Salvar">
                         </form>
                         <button class="smallerButton" onclick="window.location='/?f=userHomePage'">Voltar</button></td>
                     <?php } else { ?>
                         <td class="tdTable"><?php echo $value['id'] ?></td>
-                        <td class="tdTable"><?php echo $value['username'] ?></td>
-                        <td class="tdTable"><?php echo $value['email'] ?></td>
-                        <td class="tdTable"><?php echo $value['password'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_username'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_email'] ?></td>
+                        <td class="tdTable"><?php echo $value['users_password'] ?></td>
                         <td class="tdTable">
                             <button class="smallerButton" onclick="window.location='/?f=editUser&userid=<?php echo $value['id'] ?>'">Editar</button>
                             <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['id'] ?>'">Deletar</button>

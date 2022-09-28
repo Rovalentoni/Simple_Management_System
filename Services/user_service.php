@@ -1,84 +1,72 @@
 <?php
 class UserService
 {
-    //Funções de Read:
 
-    public function readUsers()
+
+    public $mysqli;
+
+    function __construct()
     {
-        return json_decode(file_get_contents(INCLUDE_PATH . '/Data/users.json'), true);
+        include_once(INCLUDE_PATH . '/Core/connection.php');
+        $this->mysqli = new Cnn([
+            'host' => 'localhost',
+            'username' => 'root',
+            'password' => 3005,
+            'database' => 'users',
+            'port' => 3306
+        ]);
     }
 
 
+    //Funções de List:
 
-    //Funções de backup
-
-    public function originalUsers()
+    public function listUsers()
     {
-        $currentUsers = $this->readUsers();
-        if (empty($currentUsers)) {
-            $adminLogin = [
-                ["username" => "Rodrigo", "email" => "Rodrigo@hotmail.com", "password" => "sourodrigo", "id" => "0"]
-            ];
-            file_put_contents('./Data/users.json', json_encode($adminLogin));
-        }
-        if (is_array($currentUsers)) {
-            foreach ($currentUsers as $key => $value) {
-                if (empty($value)) {
-                    $adminLogin = [
-                        ["username" => "Rodrigo", "email" => "Rodrigo@hotmail.com", "password" => "sourodrigo", "id" => "0"]
-                    ];
-                    file_put_contents('./Data/users.json', json_encode($adminLogin));
-                }
-            }
-        }
+        $query = 'SELECT * FROM users_table;';
+        $infoList = $this->mysqli->givenQuery($query);
+        return ($infoList);
     }
 
     // Funções do Usuário: 
 
     public function create_User($param)
     {
-        if (empty($param['username']) || empty($param['password']) || empty($param['email'])) {
+        if (empty($param['users_username']) || empty($param['users_password']) || empty($param['users_email'])) {
             header('Location:/?f=userCreatePage&blank=true');
-        } else if (strlen($param['username']) < 4 || strlen($param['password']) < 4 || strlen($param['email']) < 4) {
-            header('Location:/?f=userCreatePage&strlen=true');
+        } else if (strlen($param['users_username']) < 4 || strlen($param['users_password']) < 4 || strlen($param['users_email']) < 4) {
+            header('Location:/?f=usersCreatePage&strlen=true');
         } else {
-            $currentUsers = $this->readUsers();
-            $currentUsers[] = $_POST;
-            foreach ($currentUsers as $key => $value) {
-                $value['id'] = $key;
-                $currentUsers[$key] = $value;
-            };
-            file_put_contents(INCLUDE_PATH . '/Data/users.json', json_encode($currentUsers));
+            $createQuery = "INSERT INTO users.users_table (users_username, users_email, users_password) VALUES ( '" . $param['users_username'] . "','" . $param['users_email'] . "','" .  $param['users_password'] . "');";
+            $this->mysqli->givenQuery($createQuery);
             header('Location:/?f=userHomePage&cadastro=1');
+            // print_r($createQuery);
         }
     }
+    //INSERT INTO users`.`users_table` (`users_id`, `users_username`, `users_email`, `users_password`) VALUES ('2', 'Beatriz', 'Beatriz@hotmail.com', 'soubeatriz');
+
 
     public function delete_User($param)
     {
 
-
-        $currentUsers = $this->readUsers();
-        foreach ($currentUsers as $key => $value) {
-            if ($value['id'] == $param['userid']) {
-                unset($currentUsers[$key]);
-                file_put_contents(INCLUDE_PATH . '/Data/users.json', json_encode($currentUsers));
-                // header('Location:/?f=userHomePage&delete=1');
-                return true;
-            }
-        }
+        $currentUsers = $this->listUsers();
+        $deleteQuery = 'DELETE FROM users_table WHERE (users_id =' . $param['userid'] . ' );';
+        $this->mysqli->givenQuery($deleteQuery);
+        return true;
     }
 
-    public function edit_User($param)
+
+
+    public function edit_UserOLD($param)
     {
 
-        $currentUsers = $this->readUsers();
+        $currentUsers = $this->listUsers();
 
         foreach ($currentUsers as $key => $value) {
             if ($value['id'] == $param['userid']) {
                 if ($value['id'] == $_SESSION['id']) {
                     $_SESSION['username'] = $_POST['username'];
-                } else if ($value['id'] == $_SESSION['id'] && $value['username'] != $_SESSION['username']) {
-                    $_SESSION['username'] = $value['username'];
+                } else if ($value['id'] == $_SESSION['id'] && $value['users_username'] != $_SESSION['username']) {
+                    $_SESSION['username'] = $value['users_username'];
                 }
             }
         }
@@ -94,22 +82,24 @@ class UserService
                 file_put_contents(INCLUDE_PATH . '/Data/users.json', json_encode($currentUsers));
                 header('Location:/?f=userHomePage&editdone=true');
                 break;
-            } else header('Location:/?f=userHomePage&blank=1');
+            } else header('Location: /?f=userHomePage&blank=1');
         }
     }
 
 
-
-    public function fixName()
+    public function edit_User($param)
     {
+        // $currentUsers = $this->listUsers();
+        $editQuery = 'UPDATE users.users_table SET users_username = ' . $param['users_username'] . ', users_email = ' . $param['users_email'] . ', users_password = ' . $param['users_password'] . ' WHERE (users_id = ' . $param['userid'] . ');';
 
-        $currentUsers = $this->readUsers();
-        foreach ($currentUsers as $key => $value) {
-            if (isset($_SESSION['id'])) {
-                if ($value['id'] == $_SESSION['id'] && $value['username'] != $_SESSION['username']) {
-                    $_SESSION['username'] = $value['username'];
-                }
-            }
-        }
+        // if (empty($param['users_username']) || empty($param['users_email']) || empty($param['users_password'])) {
+        //     header('Location:/?f=userHomePage&blank=true');
+        // } else
+         $this->mysqli->givenQuery($editQuery);
+        header('Location: /?f=userHomePage&editdone=true');
+        // print_r($param);
+        // print_r($editQuery);
+        // return true;
     }
 }
+

@@ -62,8 +62,7 @@
 
         </tr>
         <?php
-        $cars_Service = new CarsService;
-        $currentCars = $cars_Service->readCars();
+        function carHome($currentCars) {
         foreach ($currentCars as $key => $value) :
         ?> <tr>
                 <td class="tdTable"><?php echo $value['id'] ?></td>
@@ -79,7 +78,7 @@
                 </td>
 
             </tr>
-        <?php endforeach ?>
+        <?php endforeach;} ?>
 
     </table>
 </div>

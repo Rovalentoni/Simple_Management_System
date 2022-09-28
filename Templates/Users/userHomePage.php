@@ -56,24 +56,23 @@
 
             </tr>
             <?php
-            $user_Service = new UserService;
-            $currentUsers = $user_Service->readUsers();
+            
             foreach ($currentUsers as $key => $value) :
             ?> <tr>
-                    <td class="tdTable"><?php echo $value['id'] ?></td>
-                    <td class="tdTable"><?php echo $value['username'] ?></td>
-                    <td class="tdTable"><?php echo $value['email'] ?></td>
-                    <td class="tdTable"><?php echo $value['password'] ?></td>
+                    <td class="tdTable"><?php echo $value['users_id']; ?></td>
+                    <td class="tdTable"><?php echo $value['users_username']; ?></td>
+                    <td class="tdTable"><?php echo $value['users_email']; ?></td>
+                    <td class="tdTable"><?php echo $value['users_password']; ?></td>
 
                     <td class="tdTable">
-                        <button class="smallerButton" onclick="window.location='/?f=userEditPage&userid=<?php echo $value['id'] ?>'">Editar</button>
-                        <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['id'] ?>'">Deletar</button>
-                        <button class="detailsButton2" onclick="window.location='/?f=userDetailsPage&userid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                        <button class="smallerButton" onclick="window.location='/?f=userEditPage&userid=<?php echo $value['users_id'] ?>'">Editar</button>
+                        <button class="smallerRedButton" onclick="window.location='/?f=deleteUser&userid=<?php echo $value['users_id'] ?>'">Deletar</button>
+                        <button class="detailsButton2" onclick="window.location='/?f=userDetailsPage&userid=<?php echo $value['users_id'] ?>'">Ver Detalhes</button>
 
                     </td>
 
                 </tr>
-            <?php endforeach ?>
+            <?php endforeach;?>
 
         </table>
     </div>

@@ -37,19 +37,19 @@
 
 
     <?php
-    $user_Service = new UserService;
-    $currentUsers = $user_Service->readUsers();
+
     foreach ($currentUsers as $key => $value) :
-    ?> <tr> <?php if ($value['id'] == $_GET['userid']) { ?>
+    ?> <tr> <?php if ($value['users_id'] == $_GET['userid']) { ?>
                 <div class="divMiddle">
-                    <form action="/?f=editUser&userid=<?php echo $value['id'] ?>&edit=true" method="POST">
+                    <form action="/?f=editUser" method="POST">
                         <div class="middlecontroller">
                             <div><label>Nome do usuário:</label></div>
-                            <div><input type="text" class="inputListing" name="username" value="<?php echo $value['username'] ?>"></div>
+                            <div><input type="text" class="inputListing" name="users_username" value="<?php echo $value['users_username'] ?>"></div>
                             <div><label>Email do usuário:</label></div>
-                            <input type="text" class="inputListing" name="email" value="<?php echo $value['email'] ?>">
+                            <input type="text" class="inputListing" name="users_email" value="<?php echo $value['users_email'] ?>">
                             <div><label>Senha do usuário:</label></div>
-                            <div><input type="text" class="inputListing" name="password" value="<?php echo $value['password'] ?>"></label></div>
+                            <div><input type="text" class="inputListing" name="users_password" value="<?php echo $value['users_password'] ?>"></label></div>
+                            <input type="hidden" name="userid" value ="<?php echo $value['users_id'] ?>">
                             <input class="buttonEntrar" type="submit" value="Salvar">
                     </form>
             <?php }

@@ -53,17 +53,16 @@
 
 < </tr>
     <?php
-    $user_Service = new UserService;
-    $currentUsers = $user_Service->readUsers();
+    
     foreach ($currentUsers as $key => $value) :
         if ($_GET['userid'] == $value['id']) {
     ?>
             <div class="detailsPage">
                 <ul>
                     <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
-                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['username'] ?></li>
-                    <li class="detailsInfo"><b>Email:</b> <?php echo $value['email'] ?></li>
-                    <li class="detailsInfo"><b>Senha: </b><?php echo $value['password'] ?></li>
+                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['users_username'] ?></li>
+                    <li class="detailsInfo"><b>Email:</b> <?php echo $value['users_email'] ?></li>
+                    <li class="detailsInfo"><b>Senha: </b><?php echo $value['users_password'] ?></li>
                 </ul>
 
         <?php }

@@ -1,31 +1,22 @@
 <?php
 class CarsService
 {
+    public $mysqli;
 
+        function __construct()
+        {
+            include_once (INCLUDE_PATH . '/Core/connection.php');
+            $this->mysqli = new Cnn ([
+                'host' => 'localhost',
+                'username' => 'root',
+                'password' => 3005,
+                'database' => 'test',
+                'port' => 3306
+            ]);
+        }
     public function readCars()
     {
         return json_decode(file_get_contents(INCLUDE_PATH . '/Data/cars.json'), true);
-    }
-
-
-    public function originalCars()
-    {
-
-        $currentCars = $this->readCars();
-        if (empty($currentCars)) {
-            $backup = [
-                [
-                    "id" => "0",
-                    "placa" => "DRG6583",
-                    "marca" => "Honda",
-                    "modelo" => "FIT",
-                    "tipo" => "carro",
-                    "ano" => "2006",
-                    "cor" => "Dourado"
-                ]
-            ];
-            file_put_contents(INCLUDE_PATH . '/Data/cars.json', json_encode($backup));
-        }
     }
 
 

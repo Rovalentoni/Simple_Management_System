@@ -8,8 +8,7 @@ class Router
         define('INCLUDE_PATH', __DIR__);
         session_start();
         ini_set('error_reporting', E_ALL);
-        $this->start();
-
+        // $this->fixName();
         if (!empty($_GET['f'])) {
             $router = $_GET['f'];
             $this->$router();
@@ -17,33 +16,26 @@ class Router
     }
 
 
-
-
-    function start()
+    public function fixName()
     {
         include_once INCLUDE_PATH . '/Services/user_service.php';
-        include_once INCLUDE_PATH . '/Services/cars_service.php';
-        include_once INCLUDE_PATH . '/Services/drivers_service.php';
         $user_Service = new UserService;
-        $cars_Service = new CarsService;
-        $drivers_Service = new DriversService;
-        $cars_Service->originalCars();
-        $drivers_Service->originalDrivers();
-        $user_Service->originalUsers();
-        $user_Service->fixName();
+        $currentUsers = $user_Service->listUsers();
+        foreach ($currentUsers as $key => $value) {
+            if (isset($_SESSION['id'])) {
+                if ($value['id'] == $_SESSION['id'] && $value['users_username'] != $_SESSION['username']) {
+                    $_SESSION['username'] = $value['users_username'];
+                }
+            }
+        }
     }
 
-
-
-
-
-    //Funções de login
 
     function loginForm()
     {
         include_once INCLUDE_PATH . '/Services/user_service.php';
         $user_Service = new UserService;
-        $user_Service->originalUsers();
+        $users = $user_Service->listUsers();
         if (isset($_SESSION['login'])) {
             header('Location:/?f=mainHome');
         } else {
@@ -61,7 +53,9 @@ class Router
         include_once INCLUDE_PATH . '/Services/session_service.php';
         include_once INCLUDE_PATH . '/Services/user_service.php';
         $session_Service = new SessionService;
-        $session_Service->login($_POST);
+        $user_Service = new UserService;
+        $users = $user_Service->listUsers();
+        $session_Service->login($_POST, $users);
     }
 
     function logout()
@@ -91,8 +85,12 @@ class Router
     function userHomePage()
     {
         if (isset($_SESSION['login'])) {
+
             include_once INCLUDE_PATH . '/Services/user_service.php';
+            $user_Service = new UserService;
+            $currentUsers = $user_Service->listUsers();
             include_once INCLUDE_PATH . '/Templates/Users/userHomePage.php';
+
             if (isset($_GET['cadastro'])) {
                 echo "<div class='greenWarning'><h4>O cadastro foi efetuado com sucesso!</h4></div>";
             } else if (isset($_GET['delete'])) {
@@ -111,6 +109,7 @@ class Router
     {
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
+            $user_Service = new UserService;
             include_once INCLUDE_PATH . '/Templates/Users/userCreatePage.php';
             if (isset($_GET['blank'])) {
                 echo ("<div class='warningUp' 'position:relative; top:350px;'>Não é possível deixar nenhum dos campos em branco</div>");
@@ -125,13 +124,20 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
             include_once INCLUDE_PATH . '/Templates/Users/userListPage.php';
+            $user_Service = new UserService;
+            $currentUsers = $user_Service->listUsers();
         } else header('Location:/?f=loginForm&try=2');
     }
+
+
     function userEditPage()
     {
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
+            $user_Service = new UserService;
+            $currentUsers = $user_Service->listUsers();
             include_once INCLUDE_PATH . '/Templates/Users/userEditPage.php';
+
             if (isset($_GET['blank'])) {
                 echo ("<div class='warningUp' 'position:relative; top:350px;'>Não é possível deixar nenhum dos campos em branco</div>");
             } else if (isset($_GET['strlen'])) {
@@ -144,6 +150,8 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
             include_once INCLUDE_PATH . '/Templates/Users/userDetailsPage.php';
+            $user_Service = new UserService;
+            $currentUsers = $user_Service->listUsers();
         } else header('Location:/?f=loginForm&try=2');
     }
 
@@ -155,7 +163,6 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
             $user_Service = new UserService;
-
             $user_Service->create_User($_POST);
         } else header('Location:/?f=loginForm&try=2');
     }
@@ -165,6 +172,7 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
             $user_Service = new UserService;
+            $user_Service->delete_User($_GET);
             if ($user_Service->delete_User($_GET) === true) {
                 header('Location:/?f=userHomePage&delete=1');
             }
@@ -176,7 +184,8 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/user_service.php';
             $user_Service = new UserService;
-            $user_Service->edit_User($_GET);
+            // print_r($_POST);
+            $user_Service->edit_User($_POST);
         } else header('Location:/?f=loginForm&try=2');
     }
 
@@ -187,8 +196,12 @@ class Router
     function carsHomePage()
     {
         if (isset($_SESSION['login'])) {
+
             include_once INCLUDE_PATH . '/Services/cars_service.php';
             include_once INCLUDE_PATH . '/Templates/Vehicles/carsHomePage.php';
+            $cars_Service = new CarsService;
+            $currentCars = $cars_Service->readCars();
+            carHome($currentCars);
             if (isset($_GET['create'])) {
                 echo "<div class='greenWarning'><h4>O cadastro do veículo foi efetuado com sucesso!</h4></div>";
             } else if (isset($_GET['delete'])) {
@@ -219,6 +232,8 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/cars_service.php';
             include_once INCLUDE_PATH . '/Templates/Vehicles/carsDetailsPage.php';
+            $cars_Service = new CarsService;
+            $currentCars = $cars_Service->readcars();
         } else header('Location:/?f=loginForm&try=2');
     }
     function carsEditPage()
@@ -226,6 +241,8 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/cars_service.php';
             include_once INCLUDE_PATH . '/Templates/Vehicles/carsEditPage.php';
+            $cars_Service = new CarsService;
+            $currentCars = $cars_Service->readCars();
         } else header('Location:/?f=loginForm&try=2');
     }
 
@@ -267,6 +284,10 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/drivers_service.php';
             include_once INCLUDE_PATH . '/Templates/Drivers/driversHomePage.php';
+            $drivers_Service = new DriversService;
+            $currentDrivers = $drivers_Service->readDrivers();
+            driversHome($currentDrivers);
+
             if (isset($_GET['create'])) {
                 echo "<div class='greenWarning'><h4>O cadastro do Motorista foi efetuado com sucesso!</h4></div>";
             } else if (isset($_GET['delete'])) {
@@ -284,6 +305,8 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/drivers_service.php';
             include_once INCLUDE_PATH . '/Templates/Drivers/driversDetailsPage.php';
+            $drivers_Service = new DriversService;
+            $currentDrivers = $drivers_Service->readDrivers();
         } else header('Location:/?f=loginForm&try=2');
     }
 
@@ -305,6 +328,8 @@ class Router
         if (isset($_SESSION['login'])) {
             include_once INCLUDE_PATH . '/Services/drivers_service.php';
             include_once INCLUDE_PATH . '/Templates/Drivers/driversEditPage.php';
+            $drivers_Service = new DriversService;
+            $currentDrivers = $drivers_Service->readDrivers();
         } else header('Location:/?f=loginForm&try=2');
     }
 

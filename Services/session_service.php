@@ -1,19 +1,32 @@
 <?php 
 class SessionService {
 
-public function login ($param) {
-    $user_Service = new UserService;
-    $users = $user_Service->readUsers();
+
+    public $mysqli;
+
+    function __construct()
+    {
+        include_once (INCLUDE_PATH . '/Core/connection.php');
+        $this->mysqli = new Cnn ([
+            'host' => 'localhost',
+            'username' => 'root',
+            'password' => 3005,
+            'database' => 'test',
+            'port' => 3306
+        ]);
+    }
+
+public function login ($param,$users) {
+   
     
     foreach($users as $key => $value) {
-        if ($param['email'] == $value['email'] && $param['password'] == $value['password']){
+        if ($param['users_email'] == $value['users_email'] && $param['users_password'] == $value['users_password']){
                 $_SESSION['login'] = true;
                 header('Location:/?f=mainHome');
-                $_SESSION['username'] = $value['username'];
-                $_SESSION['id'] = $value['id'];
+                $_SESSION['username'] = $value['users_username'];
+                $_SESSION['id'] = $value['users_id'];
             }
             
-    
 }
 
 header('Location:/?f=loginForm&try=1'); die;
