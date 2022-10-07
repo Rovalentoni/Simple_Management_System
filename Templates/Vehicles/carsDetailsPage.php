@@ -47,7 +47,6 @@
         <li class="sideLi"><a href="/?f=carsHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
     </ul>
-    <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
 
@@ -55,18 +54,18 @@
     <?php
 
     foreach ($currentCars as $key => $value) :
-        if ($_GET['carId'] == $value['id']) {
+        if ($_GET['carId'] == $value['cars_id']) {
     ?>
             <div class="detailsPage">
                 <ul>
                    
-                    <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
-                <li class="detailsInfo"><b>Placa:</b><?php echo $value['placa'] ?></li>
-                <li class="detailsInfo"><b>Marca:</b><?php echo $value['marca'] ?></li>
-                <li class="detailsInfo"><b>Modelo:</b><?php echo $value['modelo'] ?></li>
-                <li class="detailsInfo"><b>Tipo:</b><?php echo $value['tipo'] ?></li>
-                <li class="detailsInfo"><b>Ano:</b><?php echo $value['ano'] ?></li>
-                <li class="detailsInfo"><b>Cor:</b><?php echo $value['cor'] ?></li>
+                    <li class="detailsInfo"><b>ID:</b><?php echo $value['cars_id'] ?></li>
+                <li class="detailsInfo"><b>Placa:</b><?php echo $value['cars_plate'] ?></li>
+                <li class="detailsInfo"><b>Marca:</b><?php echo $value['cars_manufacturer'] ?></li>
+                <li class="detailsInfo"><b>Modelo:</b><?php echo $value['cars_model'] ?></li>
+                <li class="detailsInfo"><b>Tipo:</b><?php echo $value['cars_typo'] ?></li>
+                <li class="detailsInfo"><b>Ano:</b><?php echo $value['cars_year'] ?></li>
+                <li class="detailsInfo"><b>Cor:</b><?php echo $value['cars_color'] ?></li>
                 </ul>
 
         <?php }

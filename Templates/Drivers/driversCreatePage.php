@@ -46,21 +46,23 @@
             <h2>Cadastro de novo Motorista:</h2>
 
             <div><label>Nome do novo Motorista:</label></div>
-            <div><input type="text" class="inputMiddle" name="users_username"></div>
+            <div><input type="text" class="inputMiddle" name="drivers_username"></div>
 
             <div><label>Idade do Motorista:</label></div>
-            <div><input type="text" class="inputMiddle" name="age"></label></div>
+            <div><input type="text" class="inputMiddle" name="drivers_age"></label></div>
 
             <div><label>Etnia do Motorista:</label></div>
-            <div><input type="text" class="inputMiddle" name="type"></label></div>
+            <div><input type="text" class="inputMiddle" name="drivers_type"></label></div>
 
             <div><label>CNH do Motorista:</label></div>
-            <div><input type="text" class="inputMiddle" name="cnh"></label></div>
+            <div><input type="text" class="inputMiddle" name="drivers_cnh"></label></div>
 
             <div><label>Sexo do Motorista:</label></div>
-            <div><input type="text" class="inputMiddle" name="sex"></label></div>
+            <div><input type="text" class="inputMiddle" name="drivers_sex"></label></div>
 
             <div><input type="submit" class="buttonEntrar" value="Cadastrar"></div>
         </div>
     </form>
 </div>
+
+</html>

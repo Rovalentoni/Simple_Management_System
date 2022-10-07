@@ -46,8 +46,6 @@
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
 
     </ul>
-    <!-- <img src="/Midia/silverV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
-
 </div>
 <div>
     <table class="tableHome">
@@ -62,24 +60,24 @@
 
         </tr>
         <?php
-        function driversHome($currentDrivers) {
+
         foreach ($currentDrivers as $key => $value) :
         ?> <tr>
-                <td class="tdTable"><?php echo $value['id'] ?></td>
-                <td class="tdTable"><?php echo $value['users_username'] ?></td>
-                <td class="tdTable"><?php echo $value['age'] ?></td>
-                <td class="tdTable"><?php echo $value['type'] ?></td>
-                <td class="tdTable"><?php echo $value['cnh'] ?></td>
-                <td class="tdTable"><?php echo $value['sex'] ?></td>
+                <td class="tdTable"><?php echo $value['drivers_id'] ?></td>
+                <td class="tdTable"><?php echo $value['drivers_username'] ?></td>
+                <td class="tdTable"><?php echo $value['drivers_age'] ?></td>
+                <td class="tdTable"><?php echo $value['drivers_type'] ?></td>
+                <td class="tdTable"><?php echo $value['drivers_cnh'] ?></td>
+                <td class="tdTable"><?php echo $value['drivers_sex'] ?></td>
 
                 <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="detailsButton2" onclick="window.location='/?f=driversDetailsPage&driverid=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                    <button class="smallerButton" onclick="window.location='/?f=driversEditPage&driverid=<?php echo $value['drivers_id'] ?>'">Editar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=deleteDriver&driverid=<?php echo $value['drivers_id'] ?>'">Deletar</button>
+                    <button class="detailsButton2" onclick="window.location='/?f=driversDetailsPage&driverid=<?php echo $value['drivers_id'] ?>'">Ver Detalhes</button>
                 </td>
 
             </tr>
-        <?php endforeach;} ?>
+        <?php endforeach; ?>
 
     </table>
 </div>

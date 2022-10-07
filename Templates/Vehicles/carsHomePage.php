@@ -47,7 +47,6 @@
         <li class="sideLi"><a href="/?f=carsHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=carsCreatePage">Criar</a></li>
     </ul>
-    <!-- <img src="/Midia/closeV.jpg" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
 <div>
@@ -58,27 +57,31 @@
             <th>Marca</th>
             <th>Modelo</th>
             <th>Tipo</th>
+            <th>Ano</th>
+            <th>Cor</th>
             <th style="width:280px;">Ações</th>
 
         </tr>
         <?php
-        function carHome($currentCars) {
+        
         foreach ($currentCars as $key => $value) :
         ?> <tr>
-                <td class="tdTable"><?php echo $value['id'] ?></td>
-                <td class="tdTable"><?php echo $value['placa'] ?></td>
-                <td class="tdTable"><?php echo $value['marca'] ?></td>
-                <td class="tdTable"><?php echo $value['modelo'] ?></td>
-                <td class="tdTable"><?php echo $value['tipo'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_id'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_plate'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_manufacturer'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_model'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_type'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_year'] ?></td>
+                <td class="tdTable"><?php echo $value['cars_color'] ?></td>
                 <td class="tdTable">
-                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['id'] ?>'">Editar</button>
-                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['id'] ?>'">Deletar</button>
-                    <button class="detailsButton2" onclick="window.location='/?f=carsDetailsPage&carId=<?php echo $value['id'] ?>'">Ver Detalhes</button>
+                    <button class="smallerButton" onclick="window.location='/?f=carsEditPage&carId=<?php echo $value['cars_id'] ?>'">Editar</button>
+                    <button class="smallerRedButton" onclick="window.location='/?f=deleteCars&carId=<?php echo $value['cars_id'] ?>'">Deletar</button>
+                    <button class="detailsButton2" onclick="window.location='/?f=carsDetailsPage&carId=<?php echo $value['cars_id'] ?>'">Ver Detalhes</button>
 
                 </td>
 
             </tr>
-        <?php endforeach;} ?>
+        <?php endforeach; ?>
 
     </table>
 </div>

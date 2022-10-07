@@ -39,16 +39,22 @@
     <?php
 
     foreach ($currentCars as $key => $value) :
-    ?> <tr> <?php if ($value['id'] == $_GET['carId']) { ?>
+    ?> <tr> <?php if ($value['cars_id'] == $_GET['carId']) { ?>
                 <div class="divMiddle">
-                    <form action="/?f=editCars&carId=<?php echo $value['id'] ?>&edit=true" method="POST">
+                    <form action="/?f=editCars&carId=<?php echo $value['cars_id'] ?>&edit=true" method="POST">
                         <div class="middlecontroller">
-                            <input type="text" class="inputListing" name="placa" value="<?php echo $value['placa'] ?>">
-                            <input type="text" class="inputListing" name="marca" value="<?php echo $value['marca'] ?>">
-                            <input type="text" class="inputListing" name="modelo" value="<?php echo $value['modelo'] ?>">
-                            <input type="text" class="inputListing" name="tipo" value="<?php echo $value['tipo'] ?>">
-                            <input type="text" class="inputListing" name="ano" value="<?php echo $value['ano'] ?>">
-                            <input type="text" class="inputListing" name="cor" value="<?php echo $value['cor'] ?>">
+                            <b><div><label>Placa</label></div></b>
+                            <input type="text" class="inputListing" name="placa" value="<?php echo $value['cars_plate'] ?>">
+                            <b><div><label>Fabricante</label></div></b>
+                            <input type="text" class="inputListing" name="marca" value="<?php echo $value['cars_manufacturer'] ?>">
+                            <b><div><label>Modelo</label></div></b>
+                            <input type="text" class="inputListing" name="modelo" value="<?php echo $value['cars_model'] ?>">
+                            <b><div><label>Type</label></div></b>
+                            <input type="text" class="inputListing" name="tipo" value="<?php echo $value['cars_type'] ?>">
+                            <b> <div><label>Ano</label></div></b>
+                            <input type="number" class="inputListing" name="ano" maxlength = "4" min="1900" max="2024" value="<?php echo $value['cars_year'] ?>">
+                            <b><div><label>Cor</label></div></b>
+                            <input type="text" class="inputListing" name="cor" value="<?php echo $value['cars_color'] ?>">
                             <input class="buttonEntrar" type="submit" value="Salvar">
                     </form>
             <?php }

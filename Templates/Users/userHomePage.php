@@ -43,7 +43,6 @@
             <li class="sideLi"><a href="/?f=userHomePage">Listar</a></li>
             <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
         </ul>
-        <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
     </div>
     <div>
         <table class="tableHome">

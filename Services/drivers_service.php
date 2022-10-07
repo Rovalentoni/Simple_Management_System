@@ -1,13 +1,17 @@
 <?php
 
-class DriversService {
+class DriversService
+
+//--------- Conexão ao Banco de Dados -------------//
+
+{
 
     public $mysqli;
 
     function __construct()
     {
-        include_once (INCLUDE_PATH . '/Core/connection.php');
-        $this->mysqli = new Cnn ([
+        include_once(INCLUDE_PATH . '/Core/connection.php');
+        $this->mysqli = new Cnn([
             'host' => 'localhost',
             'username' => 'root',
             'password' => 3005,
@@ -17,63 +21,51 @@ class DriversService {
     }
 
 
-public function readDrivers()
-{  
-    return json_decode(file_get_contents(INCLUDE_PATH . '/Data/drivers.json'), true);
-}
+    //--------- Função de Read -------------//
 
-
-public function create_Driver($param)
-{   
-    
-    foreach ($param as $key => $value) {
-        if (empty($value)) {
-            header('Location:/?f=driversCreatePage&blank=true');
-        } else if (strlen($value) < 3) {
-            header('Location:/?f=driversCreatePage&strlen=true');
-        } else {
-            $currentDrivers = $this->readDrivers();
-            $currentDrivers[] = $_POST;
-            foreach ($currentDrivers as $key => $value) {
-                $value['id'] = $key;
-                $currentDrivers[$key] = $value;
-            }
-        }
+    public function readDrivers()
+    {
+        $readQuery = "SELECT * FROM drivers.drivers_table";
+        return $this->mysqli->givenQuery($readQuery);
     }
-    file_put_contents(INCLUDE_PATH . '/Data/drivers.json', json_encode($currentDrivers));
-    header('Location:/?f=driversHomePage&create=true');
-}
 
-public function delete_Driver($param)
-{   
-    $currentDrivers = $this->readDrivers();
-        foreach($currentDrivers as $key => $value) {
-            if ($value['id'] == $param['driverid']) {
-                unset($currentDrivers[$key]);
-                    file_put_contents(INCLUDE_PATH . '/Data/drivers.json', json_encode($currentDrivers));
-                    header('Location:/?f=driversHomePage&delete=true');
-            }
-        }
-}
+    //--------- Função de Create -------------//
 
-public function edit_Driver($param)
-{   
-    $currentDrivers = $this->readDrivers();
-        foreach($currentDrivers as $key => $value){
-            if ($value['id'] == $param['driverid'] && !empty($_POST['username']) && !empty($_POST['age']) && !empty($_POST['type'])
-            && !empty($_POST['cnh']) && !empty($_POST['sex'])) {
-                $value['users_username'] = $_POST['username'];
-                $value['age'] = $_POST['age'];
-                $value['type'] = $_POST['type'];
-                $value['cnh'] = $_POST['cnh'];
-                $value['sex'] = $_POST['sex'];
-                    $currentDrivers[$key] = $value;
-                        file_put_contents(INCLUDE_PATH . '/Data/drivers.json', json_encode($currentDrivers));
-                            header('Location:/?f=driversHomePage&edit=true');
-            } else {
-                header('Location:/?f=driversHomePage&blank=true');
-            }
-        }
-}
+    public function create_Driver($param)
+    {
+        $createQuery = "INSERT INTO drivers.drivers_table (drivers_username, drivers_age, drivers_type, drivers_cnh, drivers_sex) VALUES ('" . $param['drivers_username'] . "','" .
+            $param['drivers_age'] . "','" . $param['drivers_type'] . "','" . $param['drivers_cnh'] . "','" . $param['drivers_sex'] . "')";
+        if (empty($param['drivers_username']) || empty($param['drivers_age']) || empty($param['drivers_type']) || empty($param['drivers_cnh']) || empty($param['drivers_sex'])) {
+            return false;
+        } else
+            $this->mysqli->givenQuery($createQuery);
+        return true;
+    }
 
+    //--------- Função de Delete -------------//
+
+
+    public function delete_Driver($param)
+    {
+        $deleteQuery = "DELETE FROM drivers.drivers_table WHERE (drivers_id = '" . $param['driverid'] . "');";
+        $this->mysqli->givenQuery($deleteQuery);
+        return true;
+    }
+
+    //--------- Função de Edit -------------//
+
+
+    public function edit_Driver($param, $paramGet)
+    {
+
+        $editQuery = "UPDATE drivers.drivers_table SET drivers_username = '" . $param['drivers_username'] . "', drivers_age = '" . $param['drivers_age'] . "', drivers_type = '" .
+            $param['drivers_type'] . "', drivers_cnh = '" . $param['drivers_cnh'] . "', drivers_sex = '" . $param['drivers_sex'] . "' WHERE ( drivers_id = '" . $paramGet['driverid'] . "');";
+
+        if (empty($param['drivers_username']) || empty($param['drivers_age']) || empty($param['drivers_type']) || empty($param['drivers_cnh']) || empty($param['drivers_sex'])) {
+
+            return false;
+        } else
+            $this->mysqli->givenQuery($editQuery);
+                 return true;
+    }
 }

@@ -55,7 +55,7 @@
             <div><input type="text" class="inputMiddle" name="tipo"></label></div>
 
             <div><label>Ano do novo veículo:</label></div>
-            <div><input type="number" class="inputMiddle" name="ano"></label></div>
+            <div><input type="number" class="inputMiddle" name="ano" maxlength = "4" max = "2024" min = "1900"></label></div>
 
             <div><label>Cor do novo veículo:</label></div>
             <div><input type="text" class="inputMiddle" name="cor"></label></div>

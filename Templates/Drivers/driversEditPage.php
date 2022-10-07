@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,20 +37,20 @@
 
 
     <?php
-    
+
     foreach ($currentDrivers as $key => $value) :
-    ?> <tr> <?php if ($value['id'] == $_GET['driverid']) { ?>
-    <div class="divMiddle">
-                    <form action="/?f=editDriver&driverid=<?php echo $value['id'] ?>&edit=true" method="POST">
-                    <div class="middlecontroller">
-                    <label><b>Nome:</b></label><input type="text" class="inputListing" name="users_username" value="<?php echo $value['users_username'] ?>">
-                    <label><b>Idade:</b></label><input type="text" class="inputListing" name="age" value="<?php echo $value['age'] ?>">
-                    <label><b>Etnia:</b></label><input type="text" class="inputListing" name="type" value="<?php echo $value['type'] ?>">
-                    <label><b>CNH:</b></label><input type="text" class="inputListing" name="cnh" value="<?php echo $value['cnh'] ?>">
-                    <label><b>Sexo:</b></label><input type="text" class="inputListing" name="sex" value="<?php echo $value['sex'] ?>">
-                   <input class="buttonEntrar" type="submit" value="Salvar">
-                </form>
-        <?php }
+    ?> <tr> <?php if ($value['drivers_id'] == $_GET['driverid']) { ?>
+                <div class="divMiddle">
+                    <form action="/?f=editDriver&driverid=<?php echo $value['drivers_id'] ?>&edit=true" method="POST">
+                        <div class="middlecontroller">
+                            <label><b>Nome:</b></label><input type="text" class="inputListing" name="drivers_username" value="<?php echo $value['drivers_username'] ?>">
+                            <label><b>Idade:</b></label><input type="number" class="inputListing" min="0" max="120" name="drivers_age" value="<?php echo $value['drivers_age'] ?>">
+                            <label><b>Etnia:</b></label><input type="text" class="inputListing" name="drivers_type" value="<?php echo $value['drivers_type'] ?>">
+                            <label><b>CNH:</b></label><input type="text" class="inputListing" name="drivers_cnh" value="<?php echo $value['drivers_cnh'] ?>">
+                            <label><b>Sexo:</b></label><input type="text" class="inputListing" name="drivers_sex" value="<?php echo $value['drivers_sex'] ?>">
+                            <input class="buttonEntrar" type="submit" value="Salvar">
+                    </form>
+            <?php }
         endforeach ?>
 </body>
 

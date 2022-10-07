@@ -47,7 +47,6 @@
         <li class="sideLi"><a href="/?f=userHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=userCreatePage">Criar</a></li>
     </ul>
-    <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
 
@@ -55,11 +54,11 @@
     <?php
     
     foreach ($currentUsers as $key => $value) :
-        if ($_GET['userid'] == $value['id']) {
+        if ($_GET['userid'] == $value['users_id']) {
     ?>
             <div class="detailsPage">
                 <ul>
-                    <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
+                    <li class="detailsInfo"><b>ID:</b><?php echo $value['users_id'] ?></li>
                     <li class="detailsInfo"><b>Nome:</b><?php echo $value['users_username'] ?></li>
                     <li class="detailsInfo"><b>Email:</b> <?php echo $value['users_email'] ?></li>
                     <li class="detailsInfo"><b>Senha: </b><?php echo $value['users_password'] ?></li>

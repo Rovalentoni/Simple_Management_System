@@ -12,6 +12,7 @@ class Cnn
         } catch (Exception $exc) {
             echo 'Failed, the error is' . $exc;
         }
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     }
 
 
@@ -26,7 +27,7 @@ class Cnn
                 $infoDb[] = $info;
             }
             return $infoDb;
-                    //Return fora do while, se não ele parará a função no primeiro loop e salvará somente a primeira linha.
+                    //Return fora do while, se não ele parará a função no primeiro loop e salvará somente a primeira linha. 
         }
     }
 }

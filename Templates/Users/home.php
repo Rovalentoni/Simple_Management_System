@@ -37,7 +37,6 @@
             <li class="liNavigation"><a href="/?f=driversHomePage">Motoristas</a></li>
             <li class="liNavigation"><a href="/?f=logout">Logout</a></li>
         </ul>
-        <!-- <img src="/Midia/carsLinedUp.jpg" alt="trucks" style="width:100%; height:800px;"> -->
     </div>
 
 

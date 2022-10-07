@@ -47,26 +47,26 @@
         <li class="sideLi"><a href="/?f=driversHomePage">Listar</a></li>
         <li class="sideLi"><a href="/?f=driversCreatePage">Criar</a></li>
     </ul>
-    <!-- <img src="/Midia/users.png" alt="car closeup vertical" style="width: 100%;"> -->
 
 </div>
 
 < </tr>
     <?php
     foreach ($currentDrivers as $key => $value) :
-        if ($_GET['driverid'] == $value['id']) {
+        if ($_GET['driverid'] == $value['drivers_id']) {
     ?>
             <div class="detailsPage">
                 <ul>
-                    <li class="detailsInfo"><b>ID:</b><?php echo $value['id'] ?></li>
-                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['users_username'] ?></li>
-                    <li class="detailsInfo"><b>Idade:</b><?php echo $value['age'] ?></li>
-                    <li class="detailsInfo"><b>Etnia:</b><?php echo $value['type'] ?></li>
-                    <li class="detailsInfo"><b>CNH:</b><?php echo $value['cnh'] ?></li>
-                    <li class="detailsInfo"><b>Sexo:</b><?php echo $value['sex'] ?></li>
+                    <li class="detailsInfo"><b>ID:</b><?php echo $value['drivers_id'] ?></li>
+                    <li class="detailsInfo"><b>Nome:</b><?php echo $value['drivers_username'] ?></li>
+                    <li class="detailsInfo"><b>Idade:</b><?php echo $value['drivers_age'] ?></li>
+                    <li class="detailsInfo"><b>Etnia:</b><?php echo $value['drivers_type'] ?></li>
+                    <li class="detailsInfo"><b>CNH:</b><?php echo $value['drivers_cnh'] ?></li>
+                    <li class="detailsInfo"><b>Sexo:</b><?php echo $value['drivers_sex'] ?></li>
                 </ul>
 
         <?php }
     endforeach ?>
-        <div> <button class="detailsButton3"  onclick="window.location='/?f=driversHomePage'"> Voltar </button></div>
+        <div> <button class="detailsButton3" onclick="window.location='/?f=driversHomePage'"> Voltar </button></div>
             </div>
+
