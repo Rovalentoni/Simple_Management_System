@@ -2,7 +2,7 @@
 
 class DriversService
 
-//--------- Conexão ao Banco de Dados -------------//
+//--------- DB Connection -------------//
 
 {
 
@@ -21,7 +21,7 @@ class DriversService
     }
 
 
-    //--------- Função de Read -------------//
+    //--------- Read -------------//
 
     public function readDrivers()
     {
@@ -29,7 +29,7 @@ class DriversService
         return $this->mysqli->givenQuery($readQuery);
     }
 
-    //--------- Função de Create -------------//
+    //--------- Create -------------//
 
     public function create_Driver($param)
     {
@@ -42,7 +42,7 @@ class DriversService
         return true;
     }
 
-    //--------- Função de Delete -------------//
+    //--------- Delete -------------//
 
 
     public function delete_Driver($param)
@@ -52,7 +52,7 @@ class DriversService
         return true;
     }
 
-    //--------- Função de Edit -------------//
+    //--------- Edit -------------//
 
 
     public function edit_Driver($param, $paramGet)

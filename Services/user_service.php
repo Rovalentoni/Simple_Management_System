@@ -1,7 +1,7 @@
 <?php
 class UserService
 
-//--------- Conexão ao Banco de Dados -------------//
+//--------- DB Connection -------------//
 
 {
     public $mysqli;
@@ -19,7 +19,7 @@ class UserService
     }
 
 
-    //--------- Função de Read -------------//
+    //--------- Read -------------//
 
     public function listUsers()
     {
@@ -28,7 +28,7 @@ class UserService
         return ($infoList);
     }
 
-    //--------- Função de Create -------------//
+    //--------- Create -------------//
 
     public function create_User($param)
     {
@@ -43,7 +43,7 @@ class UserService
         }
     }
 
-    //--------- Função de Delete -------------//
+    //---------Delete -------------//
 
     public function delete_User($param)
     {
@@ -53,7 +53,7 @@ class UserService
     }
 
 
-    //--------- Função de Edit -------------//
+    //--------- Edit -------------//
 
     public function edit_User($param)
     {

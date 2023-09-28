@@ -1,7 +1,6 @@
 <?php
 class Router
 {
-    //--------- Comandos Iniciais -------------//
 
     function __construct()
     {
@@ -15,7 +14,6 @@ class Router
         } else $this->loginForm();
     }
 
-    //--------- Função de Ajustar o nome da Sessão -------------//
 
     public function fixName()
     {
@@ -31,7 +29,7 @@ class Router
         }
     }
 
-    //--------- Função do formulário de Login -------------//
+    //--------- Login Form -------------//
 
     function loginForm()
     {
@@ -50,7 +48,7 @@ class Router
         }
     }
 
-    //--------- Função de Login -------------//
+    //--------- Login -------------//
 
     function loginSession()
     {
@@ -65,7 +63,7 @@ class Router
             header('Location:/?f=loginForm&try=1');
         };
     }
-    //--------- Função de Logout -------------//
+    //--------- Logout -------------//
 
     function logout()
     {
@@ -76,7 +74,7 @@ class Router
 
 
 
-    //--------- Função de Home -------------//
+    //--------- Home -------------//
 
     function mainHome()
     {
@@ -89,7 +87,7 @@ class Router
 
 
 
-    //--------- Função da página Home de usuários -------------//
+    //--------- Home Page -------------//
 
     function userHomePage()
     {
@@ -114,7 +112,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-    //--------- Função da página de Create (User) -------------//
+    //--------- Create Page  -------------//
 
 
     function userCreatePage()
@@ -130,7 +128,7 @@ class Router
             }
         } else header('Location:/?f=loginForm&try=2');
     }
-    //--------- Função da página de listagem (User) -------------//
+    //--------- List User Page -------------//
 
     function userListPage()
     {
@@ -142,7 +140,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-    //--------- Função da página de Edit (User) -------------//
+    //---------  Edit (User) -------------//
 
     function userEditPage()
     {
@@ -160,7 +158,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Função da página de Details (User) -------------//
+        //---------  Details (User) -------------//
 
     function userDetailsPage()
     {
@@ -172,9 +170,8 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-    //--------- Chamadas das funções services (User) -------------//
 
-    //--------- Função de Create (User) -------------//
+    //--------- Create (User) -------------//
 
     function createUser()
     {
@@ -187,7 +184,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Função de Delete (User) -------------//
+        //--------- Delete (User) -------------//
 
 
     function deleteUser()
@@ -202,7 +199,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Função de Edit (User) -------------//
+        //--------- Edit (User) -------------//
 
 
     function editUser()
@@ -220,9 +217,8 @@ class Router
     }
 
 
-    //--------- Funções para páginas de veículos -------------//
 
-    //--------- Função de Home (Cars) -------------//
+    //--------- Home (Cars) -------------//
 
     function carsHomePage()
     {
@@ -244,7 +240,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Função da página de Create (Cars) -------------//
+        //---------  Create (Cars) -------------//
 
     function carsCreatePage()
     {
@@ -259,7 +255,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Função da página de Details (Cars) -------------//
+        //---------  Details (Cars) -------------//
 
     function carsDetailsPage()
     {
@@ -271,7 +267,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Função da página de Edit (Cars) -------------//
+        //---------  Edit (Cars) -------------//
 
     function carsEditPage()
     {
@@ -286,9 +282,8 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-        //--------- Chamada de funções da service (Cars) -------------//
 
-    //--------- Função de Create (Cars) -------------//
+    //--------- Create (Cars) -------------//
 
     function createCars()
     {
@@ -302,7 +297,7 @@ class Router
             }
         } else header('Location:/?f=loginForm&try=2');
     }
-    //--------- Função de Delete (Cars) -------------//
+    //--------- Delete (Cars) -------------//
 
     function deleteCars()
     {
@@ -330,7 +325,7 @@ class Router
 
 
 
-    //Páginas da listagem de Motoristas
+    //List Drivers Pages
 
     function driversHomePage()
     {
@@ -385,7 +380,7 @@ class Router
         } else header('Location:/?f=loginForm&try=2');
     }
 
-    //Funções de Service de Motoristas
+    //Driver's Services
 
     function createDriver()
     {

@@ -1,7 +1,7 @@
 <?php
 class CarsService
 
-//--------- Conexão ao Banco de Dados -------------//
+//--------- DB Connection -------------//
 
 {
     public $mysqli;
@@ -18,7 +18,7 @@ class CarsService
         ]);
     }
 
-    //--------- Função de Read -------------//
+    //--------- Read -------------//
 
     public function readCars()
     {
@@ -27,7 +27,7 @@ class CarsService
         return $infoCars;
     }
 
-    //--------- Função de Create -------------//
+    //--------- Create -------------//
 
     public function create_Car($param)
     {
@@ -45,7 +45,7 @@ class CarsService
         }
     }
 
-    //--------- Função de Delete -------------//
+    //--------- Delete -------------//
 
     public function delete_Car($param)
     {
@@ -56,7 +56,7 @@ class CarsService
     }
 
 
-    //--------- Função de Edit -------------//
+    //--------- Edit -------------//
 
     public function edit_Car($param_GET, $param_POST)
     {

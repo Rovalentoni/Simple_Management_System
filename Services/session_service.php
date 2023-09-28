@@ -2,7 +2,7 @@
 class SessionService
 {
 
-    //--------- Conexão ao Banco de dados -------------//
+    //--------- DB Connection -------------//
 
     public $mysqli;
 
@@ -17,7 +17,7 @@ class SessionService
             'port' => 3306
         ]);
     }
-    //--------- Função de Login -------------//
+    //--------- Login -------------//
 
     public function login($param, $users)
     {
@@ -34,7 +34,7 @@ class SessionService
         return false;
     }
 
-    //--------- Função de Logout -------------//
+    //--------- Logout -------------//
     
     public function logout_User()
     {
